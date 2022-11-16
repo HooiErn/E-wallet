@@ -15,7 +15,7 @@ class CreateAgentsTable extends Migration
     {
         Schema::create('agents', function (Blueprint $table) {
             $table->id();
-            $table->integer('account_id')->unsigned();
+            $table->string('account_id')->default(2);
             $table->string('name');
             $table->string('username');
             $table->string('email',191)->unique();
