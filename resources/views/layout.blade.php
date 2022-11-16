@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>CTOS</title>
+        <title>E-Wallet</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
@@ -16,14 +16,20 @@
                 color: #212529;
                 text-align: left;
                 background-color: #f5f8fa;
+                width:100%;
             }
             .navbar-laravel
             {
                 box-shadow: 0 2px 4px rgba(0,0,0,.04);
+                
             }
             .navbar-brand , .nav-link, .my-form, .login-form,.topnav-link
             {
                 font-family: Raleway, sans-serif;
+                
+            }
+            .navbar>.container{
+                justify-content:start !important;
             }
             .sidenav{
             height: 100%; 
@@ -94,7 +100,7 @@
             }
 
             .dropdown .dropbtn {
-            font-size: 16px !important;
+            font-size: 18px !important;
             border: none;
             outline: none;
             color: white;
@@ -109,7 +115,7 @@
             display: none;
             position: absolute;
             background-color: #266b89;
-            min-width: 160px;
+            min-width: 180px;
             border-radius:6px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
@@ -122,7 +128,7 @@
             text-decoration: none !important;
             display: block;
             text-align: left;
-            font-size:14px !important;
+            font-size:18px !important;
             }
 
             .dropdown-content a:hover {
@@ -151,120 +157,29 @@
             </div>
             @endif
         <!--TopNav-->
-        <a class="navbar-brand" href="#" style="color:white;"> CTOS Website</a>
+        <a class="navbar-brand" href="#" style="color:white;">E-Wallet</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-         @if (Auth::check() && Auth::user()->isAdmin())
+        
                 <div class="dropdown">
                 <button class="dropbtn">Register 
                 <i class="fa fa-caret-down"></i>
                 </button>
                <div class="dropdown-content">
-               <a  href="{{ route('agent.register') }}"
+               <a  href="#"
+                 style="color: white;"> Create Branch </a>
+                 <a  href="#"
                  style="color: white;"> Create Agents </a>
-                 <a  href="{{ route('user.register') }}"
+                 <a  href="#"
                  style="color: white;"> Create Members </a>
                </div>
                     </div>
-            <!-- second dropdown  -->
-                <div class="dropdown">
-                <button class="dropbtn">Blacklists 
-                <i class="fa fa-caret-down"></i>
-                </button>
-               <div class="dropdown-content">
-               <a  href="{{ route('blacklist.view') }}"
-                 style="color: white;"> View BlackLists </a>
-                 <a  href="{{ route('add.to.blacklist') }}"
-                 style="color: white;"> Add to BlackLists </a>
-               </div>
-                    </div>
-        <!-- third dropdown  -->
-            <div class="dropdown">
-                <button class="dropbtn">View Lists 
-                <i class="fa fa-caret-down"></i>
-                </button>
-               <div class="dropdown-content">
-               <a  href="{{ route('agent.view') }}"
-                 style="color: white;">Agents Information </a>
-                 <a  href="{{ route('member.view') }}"
-                 style="color: white;">Members Information </a>
-               </div>
-                    </div>
-           @elseif (Auth::check() && Auth::user()->isAgent() && auth()->user()->permission == '1')
-           <div class="dropdown">
-                <button class="dropbtn">Register 
-                <i class="fa fa-caret-down"></i>
-                </button>
-               <div class="dropdown-content">
-                 <a  href="{{ route('user.register') }}"
-                 style="color: white;"> Create Members </a>
-               </div>
-                    </div>
-             <!-- second dropdown  -->   
-                <div class="dropdown">
-                    <button class="dropbtn">Blacklists 
-                    <i class="fa fa-caret-down"></i>
-                    </button>
-                <div class="dropdown-content">
-                <a  href="{{ route('blacklist.view') }}"
-                    style="color: white;"> View BlackLists </a>
-                    <a  href="{{ route('add.to.blacklist') }}"
-                    style="color: white;"> Add to BlackLists </a>
-                </div>
-                        </div>
-      
-            <div class="dropdown">
-                <button class="dropbtn">View Lists 
-                <i class="fa fa-caret-down"></i>
-                </button>
-               <div class="dropdown-content">
-                 <a  href="{{ route('member.view') }}"
-                 style="color: white;">Members Information </a>
-               </div>
-                    </div>
-                    @elseif (Auth::check() && Auth::user()->isAgent() && auth()->user()->permission == '2')
-             <!--  dropdown  -->   
-                <div class="dropdown">
-                    <button class="dropbtn">Blacklists 
-                    <i class="fa fa-caret-down"></i>
-                    </button>
-                <div class="dropdown-content">
-                <a  href="{{ route('blacklist.view') }}"
-                    style="color: white;"> View BlackLists </a>
-                    <a  href="{{ route('add.to.blacklist') }}"
-                    style="color: white;"> Add to BlackLists </a>
-                </div>
-                        </div>
-      
-            <div class="dropdown">
-                <button class="dropbtn">View Lists 
-                <i class="fa fa-caret-down"></i>
-                </button>
-               <div class="dropdown-content">
-                 <a  href="{{ route('member.view') }}"
-                 style="color: white;">Members Information </a>
-               </div>
-                    </div>
-                    @elseif(Auth::check() && Auth::user()->isMember())
-                         <!--  dropdown  -->   
-                <div class="dropdown">
-                    <button class="dropbtn">Blacklists 
-                    <i class="fa fa-caret-down"></i>
-                    </button>
-                <div class="dropdown-content">
-                <a  href="{{ route('blacklist.view') }}"
-                    style="color: white;"> View BlackLists </a>
-                </div>
-                        </div>
-                    @else
-                    <div>
-                       
-                    </div>             
-                 @endif 
+           
+            
         <!--Login & Logout-->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" >
                     <ul class="navbar-nav ml-auto" >   
                         @guest
                        

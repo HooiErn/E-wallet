@@ -194,6 +194,19 @@ class AuthController extends Controller
         return view('home');
     }
 
+    //View
+    public function viewMember(){
+        return view('pages.viewMembers');
+    }
+        
+    public function viewBranch(){
+        return view('pages.viewBranch');
+    }
+        
+    public function viewAgents(){
+        return view('pages.viewAgents');
+    }
+
       public function logout()
     {
         Session::flush();

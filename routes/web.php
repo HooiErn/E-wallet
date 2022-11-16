@@ -42,6 +42,11 @@ Route::get('QrScan',[AuthController::class, 'QrScan'])->name('QrScan');
 Route::get('MemberRegistration',[AuthController::class, 'MemberRegistration'])->name('member.register');
 Route::get('BranchRegistration',[AuthController::class, 'BranchRegistration'])->name('branch.register');
 Route::get('AgentsRegistration',[AuthController::class, 'AgentsRegistration'])->name('agent.register');
+Route::get('viewMembers',[AuthController::class, 'viewMember'])->name('view.member');
+Route::get('viewBranch',[AuthController::class, 'viewBranch'])->name('view.branch');
+Route::get('viewAgents',[AuthController::class, 'viewAgents'])->name('view.agents');
+
+
 
 //Change Password
 Route::get('change-password', [AuthController::class, 'editPassword'])->name('password.change');
