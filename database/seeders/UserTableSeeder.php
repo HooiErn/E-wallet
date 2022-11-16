@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        Admins::factory()->create([
+        User::factory()->create([
             'name'      => 'Admin',
             'username'  => 'admin',
             'email'     => 'admin@example.com',
