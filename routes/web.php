@@ -35,17 +35,17 @@ Route::post('post-registration', [AuthController::class, 'postRegistration'])->n
 
 
 //Route for editing and updating users' information
-Route::get('profile',[AuthController::class, 'profile'])->name('profile');
-Route::get('transactionHistory',[AuthController::class, 'transactionHistory'])->name('view.transactionHistory');
-Route::get('Transfer',[AuthController::class, 'transfer'])->name('transfer');
-Route::get('QrScan',[AuthController::class, 'QrScan'])->name('QrScan');
-Route::get('MemberRegistration',[AuthController::class, 'MemberRegistration'])->name('member.register');
-Route::get('BranchRegistration',[AuthController::class, 'BranchRegistration'])->name('branch.register');
+Route::get('profile',[AdminController::class, 'profile'])->name('profile');
+Route::get('transactionHistory',[AdminController::class, 'transactionHistory'])->name('view.transactionHistory');
+Route::get('Transfer',[AdminController::class, 'transfer'])->name('transfer');
+Route::get('QrScan',[AdminController::class, 'QrScan'])->name('QrScan');
+Route::get('MemberRegistration',[AdminController::class, 'MemberRegistration'])->name('member.register');
+Route::get('BranchRegistration',[AdminController::class, 'BranchRegistration'])->name('branch.register');
 Route::get('AgentsRegistration',[AuthController::class, 'AgentsRegistration'])->name('agent.register');
-Route::get('viewMembers',[AuthController::class, 'viewMember'])->name('view.member');
-Route::get('viewBranch',[AuthController::class, 'viewBranch'])->name('view.branch');
-Route::get('viewAgents',[AuthController::class, 'viewAgents'])->name('view.agents');
-
+Route::get('viewMembers',[AdminController::class, 'viewMember'])->name('view.member');
+Route::get('viewBranch',[AdminController::class, 'viewBranch'])->name('view.branch');
+Route::get('viewAgents',[AdminController::class, 'viewAgents'])->name('view.agents');
+Route::get('TransferMoney',[AdminController::class, 'transferMoney'])->name('transfer.money');
 
 
 //Change Password
@@ -63,4 +63,4 @@ Route::post('forget-password', [ForgotPasswordController::class, 'sendForgetPass
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'sendResetPasswordForm'])->name('reset.password.post');
 
-Route::get('/home', [AuthController::class, 'home'])->name('home');
+Route::get('home', [AdminController::class, 'home'])->name('home');
