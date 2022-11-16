@@ -164,7 +164,7 @@
 
         
                 <div class="dropdown">
-                <button class="dropbtn">Register 
+                <button class="dropbtn">Members Entry 
                 <i class="fa fa-caret-down"></i>
                 </button>
                <div class="dropdown-content">
