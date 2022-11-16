@@ -32,29 +32,6 @@ class AuthController extends Controller
             Cookie::queue('password',$request->password,1440);
         }
 
-        $credentials = $request->only('password', 'username');
-        
-
-        if(Auth::attempt($credentials)){
-            // set remember me token when user check the box
-            //$remember = Input::get('remember');
-            /*if(!empty($remember)){
-                Auth::login(Auth::user()->id, true);
-            }*/
-            if(Auth::user()->isAdmin()){
-                return redirect()->route('agent.register')->withSuccess('You have successfully logged in!');
-            }
-            else if(Auth::user()->isAgent() && Auth::user()->permission == 1){
-                return redirect()->route('user.register')->withSuccess('You have successfully logged in!');
-            }
-            else if(Auth::user()->isAgent() && Auth::user()->permission == 2){
-                return redirect()->route('member.show')->withSuccess('You have successfully logged in!');
-            }
-            else if(Auth::user()->isMember()){
-                return redirect()->route('blacklist.view')->withSuccess('You have successfully logged in!');
-            }
-
-        }
 
         return redirect('login')->with('error', 'Username or password is incorrect. Please try again.');;
 
@@ -68,25 +45,13 @@ class AuthController extends Controller
             'username' => 'required',
             'password' => 'required',
             'email' => 'required',
-            'type' => 'required',
-            'handphone_number' => 'nullable',
-            'gender' => 'nullable',
-            'permission' => 'required',
             'created_by' => 'required',
         ]);
     
         $data = $request->all();
         $check = $this->create($data);
 
-        if($request->type == 1){
-            return redirect()->route('member.show')->withSuccess('You have successfully created a new member!');
-        }
-        elseif($request->type == 2){
-            return redirect()->route('agent.show')->withSuccess('You have successfully created a new agent!');
-        }
-        else{
-            return redirect()->route('member.show')->withSuccess('You have successfully created a new member!');
-        } 
+     
     }
 //Transfer(Phone search)
     public function transfer(){
@@ -143,46 +108,46 @@ class AuthController extends Controller
     
 
 //Update
-    public function update(Request $r)
-    {
-        $users = User::find($r->id);
-        $r->validate([
-            'name' => 'required',
-            'username' => 'required',
-            'password' => 'required',
-            'email' => 'required',
-            'handphone_number' => 'nullable',
-            'gender' => 'nullable',
-            'ic' => 'nullable',
-            'bank_account_number1' => 'nullable',
-            'bank_account_number2' => 'nullable',
-            'bank_account_number3' => 'nullable',
-            'permission' => 'required',
-        ]);
+    // public function update(Request $r)
+    // {
+    //     $users = User::find($r->id);
+    //     $r->validate([
+    //         'name' => 'required',
+    //         'username' => 'required',
+    //         'password' => 'required',
+    //         'email' => 'required',
+    //         'handphone_number' => 'nullable',
+    //         'gender' => 'nullable',
+    //         'ic' => 'nullable',
+    //         'bank_account_number1' => 'nullable',
+    //         'bank_account_number2' => 'nullable',
+    //         'bank_account_number3' => 'nullable',
+    //         'permission' => 'required',
+    //     ]);
 
     
-        $users->name = $r->name;
-        $users->username = $r->username;
-        $users->password = Hash::make($r->password);
-        $users->email = $r->email;
-        $users->handphone_number = $r->handphone_number;
-        $users->gender = $r->gender;
-        $users->ic = $r->ic;
-        $users->bank_account_number1 = $r->bank_account_number1;
-        $users->bank_account_number2 = $r->bank_account_number2;
-        $users->bank_account_number3 = $r->bank_account_number3;
-        $users->permission = $r->permission;
-        $users->save();
+    //     $users->name = $r->name;
+    //     $users->username = $r->username;
+    //     $users->password = Hash::make($r->password);
+    //     $users->email = $r->email;
+    //     $users->handphone_number = $r->handphone_number;
+    //     $users->gender = $r->gender;
+    //     $users->ic = $r->ic;
+    //     $users->bank_account_number1 = $r->bank_account_number1;
+    //     $users->bank_account_number2 = $r->bank_account_number2;
+    //     $users->bank_account_number3 = $r->bank_account_number3;
+    //     $users->permission = $r->permission;
+    //     $users->save();
 
-        Session::flash('success',"User was updated successfully!");
-        if($users->type == 2){
-            return redirect()->route('agent.show');
-        }
-        else if($users->type == 1){
-            return redirect()->route('member.show');
-        }
+    //     Session::flash('success',"User was updated successfully!");
+    //     if($users->type == 2){
+    //         return redirect()->route('agent.show');
+    //     }
+    //     else if($users->type == 1){
+    //         return redirect()->route('member.show');
+    //     }
         
-    }
+    // }
  
     //Edit Password
      public function editPassword()
@@ -225,7 +190,9 @@ class AuthController extends Controller
         return view('pages.transactionHistory');
     }
 
-    
+    public function home(){
+        return view('home');
+    }
 
       public function logout()
     {
