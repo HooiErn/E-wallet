@@ -53,32 +53,6 @@ class AuthController extends Controller
 
      
     }
-//Transfer(Phone search)
-    public function transfer(){
-        return view('pages.Transfer');
-    }
-    //QRScan
-    public function QrScan(){
-        return view('pages.QrScan');
-    }
-    //Create Members
-    public function MemberRegistration(){
-
-        return view('admin.users.CreateMembers');
-
-    }
-  //Create Branch
-  public function BranchRegistration(){
-
-    return view('admin.users.CreateBranch');
-
-}
-  //Create Agents/Manager
-  public function AgentsRegistration(){
-
-    return view('admin.users.CreateAgents');
-
-}
 
 
 //Dashboard
@@ -181,32 +155,7 @@ class AuthController extends Controller
         
     }
 
-  //Profile
-    public function profile(){
-        return view('pages.profile');
-    }
-    //Transaction History
-    public function transactionHistory(){
-        return view('pages.transactionHistory');
-    }
-
-    public function home(){
-        return view('home');
-    }
-
-    //View
-    public function viewMember(){
-        return view('pages.viewMembers');
-    }
-        
-    public function viewBranch(){
-        return view('pages.viewBranch');
-    }
-        
-    public function viewAgents(){
-        return view('pages.viewAgents');
-    }
-
+  
       public function logout()
     {
         Session::flush();

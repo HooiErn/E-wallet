@@ -49,19 +49,65 @@ class AdminController extends Controller
         return redirect('admin/login');
     }
 
-  //Dashboard
-  public function index(){
-    $categories = DB::table('categories')->select('categories.*')->get();
-    $foods = DB::table('food')->leftjoin('categories','categories.id','=','food.categoryID')->select('food.*','categories.name as categoryName')->get();
-    return view('admin/dashboard')->with(["categories" => $categories])->with(["foods" => $foods]);
+
+//Function
+//Transfer(Phone search)
+public function transfer(){
+    return view('pages.Transfer');
 }
-    
-   //Menu
-   public function menu(){
-    // $foods= Food::all();
-    $foods = DB::table('food')->leftjoin('categories','food.categoryID','=','categories.id')->select('food.*','categories.name as cName')->get();
-    return view('pages.menu')->with('foods',$foods);
+//QRScan
+public function QrScan(){
+    return view('pages.QrScan');
 }
+//Create Members
+public function MemberRegistration(){
+
+    return view('admin.users.CreateMembers');
+
+}
+//Create Branch
+public function BranchRegistration(){
+
+return view('admin.users.CreateBranch');
+
+}
+//Create Agents/Manager
+public function AgentsRegistration(){
+
+return view('admin.users.CreateAgents');
+
+}
+//Transfer Money
+public function transferMoney(){
+    return view('pages.TransferMoney');
+   }
+
+   //Profile
+   public function profile(){
+    return view('pages.profile');
+}
+//Transaction History
+public function transactionHistory(){
+    return view('pages.transactionHistory');
+}
+//Home
+public function home(){
+    return view('home');
+}
+
+//ViewMember
+public function viewMember(){
+    return view('pages.viewMembers');
+}
+//ViewBranch 
+public function viewBranch(){
+    return view('pages.viewBranch');
+}
+//ViewAgents 
+public function viewAgents(){
+    return view('pages.viewAgents');
+}
+
   
 
 }
