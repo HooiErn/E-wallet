@@ -97,7 +97,7 @@
         </div>
 </div>
 <br><br>
- <a href="{{route('transfer.money')}}"><center><button class="button">Confirm</button></center></a>
+ <a href="{{route('transfer.money')}}"><center><button class="btn btn-primary">Confirm</button></center></a>
 
 </body>
 </html>

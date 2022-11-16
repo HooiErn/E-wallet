@@ -3,7 +3,7 @@
     <head>
         <title>MY Balance</title>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Scripts -->
        <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -149,11 +149,18 @@
 
     <body>
       <!--TopNav first--> 
-    <nav class="navbar navbar-expand-lg navbar-laravel" style=" background-image:linear-gradient(to right,#4d71ff,#4d71ff); position: fixed; bottom: 0; width: 100%;">
+    <nav class="navbar navbar-expand-lg navbar-laravel" style=" background-image:linear-gradient(to right,#24a0ed,#24a0ed); position: fixed; bottom: 0; width: 100%;">
         <div class="container">
        
-        <a class="navbar-brand" href="#" style="color:white;display:inline;"> MY Balance: RM2000</a> 
-
+        &nbsp;<a class="navbar-brand" href="#" style="color:white;display:inline;"> MY Balance: RM2000</a> 
+            <!--Login & Logout-->
+            <div style="float:right;margin-right:25px;"> 
+                @guest
+                   <a class="nav-link" href="{{ route('admin.login') }}" style="color:white;"><i class="fa fa-solid fa fa-right-to-bracket"></i></a>
+                @else
+                  
+                @endguest
+                </div>
         </nav> 
     <!--TopNav second--> 
      

@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('auth.layout')
 @section('content')
 
 <!DOCTYPE html>
@@ -22,7 +22,7 @@
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     height: 100%;
     border-radius: 5px;
-    background: #00008B;
+    background: #24a0ed;
     margin-bottom:10px;
     }
 
@@ -35,9 +35,8 @@
     cursor: pointer;
     }
 
-    .button{
+    .btn-primary{
         border-radius: 15px;
-        background: #00008B;
         color: white;
         width: 300px;
     }
@@ -83,7 +82,7 @@
 
            <br><br><br>
            <!-- Button trigger modal -->
-        <center><button class="button" data-toggle="modal" data-target="#exampleModal9">Confirm Transfer</button></center>
+        <center><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal9">Confirm Transfer</button></center>
         
         <!-- Modal -->
         <div class="modal fade" id="exampleModal9" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel9" aria-hidden="true" style="width:350px;">
@@ -100,7 +99,7 @@
               </div>
         
               <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Confirm</button> 
+              <button type="button" class="btn btn-success">Confirm</button> 
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
               </div>
             </div>
