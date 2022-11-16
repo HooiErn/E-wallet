@@ -21,14 +21,33 @@ $today = $year . '-' . $month . '-' . $day;
                         @endif
             <br>
             <div class="column" style=" float: left; width: 20%;">
-             <h5>Create Members</h5>
+             <h5>Create Agents</h5>
                  <form method="POST" action="#">
                     {{ csrf_field() }}
+
                     <div class="form-group">
                         <label for="account_id">Account ID:</label>
-                        <input type="number" class="form-control" placeholder="Account ID" id="account_id" name="account_id"  required autofocus>
+                        <input type="text" class="form-control" placeholder="Account ID" id="account_id" name="account_id"  min="0" required autofocus>
                         @if ($errors->has('account_id'))
                                       <span class="text-danger">{{ $errors->first('account_id') }}</span>
+                                  @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="account_name">Account Name:</label>
+                        <input type="text" class="form-control" placeholder="Account Name" id="account_name" name="account_name"  required autofocus>
+                        @if ($errors->has('account_name'))
+                                      <span class="text-danger">{{ $errors->first('account_name') }}</span>
+                                  @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="account_level">Account Level:</label><br>
+                        <select id="account_level" name="account_level" style="width:100%;height:28px;border:white 1px solid;;box-shadow:#d0d6dc 0.5px 0.5px 0.5px 2px;font-size:15px;">
+                            <option value="Agents">Agents</option>
+                        </select>
+                        @if ($errors->has('account_level'))
+                                      <span class="text-danger">{{ $errors->first('account_level') }}</span>
                                   @endif
                     </div>
 
@@ -46,20 +65,19 @@ $today = $year . '-' . $month . '-' . $day;
                                   @endif
                     </div>
 <br>
-                    <div class="form-group">
+                    </div>
+        <!--Column 2-->
+                <div class="column" style=" float: left;width: 20%;margin-left:100px; padding-top:32px;">
+                <div class="form-group">
                         <label for="base_currency">Base Currency:</label><br>
                         <select id="base_currency" name="base_currency" style="width:100%;height:28px;border:white 1px solid;;box-shadow:#d0d6dc 0.5px 0.5px 0.5px 2px;font-size:15px;">
                             <option value="MYR">MYR</option>
-                            <option value="SGD">SGD</option>
                         </select>
                         @if ($errors->has('base_currency'))
                                       <span class="text-danger">{{ $errors->first('base_currency') }}</span>
                                   @endif
                     </div>
 
-                    </div>
-        <!--Column 2-->
-                <div class="column" style=" float: left;width: 20%;margin-left:100px; padding-top:32px;">
                 <div class="form-group">
                         <label for="login_id">Login ID:</label>
                         <input type="text" class="form-control" placeholder="Username" id="login_id" name="login_id"  required autofocus>
@@ -80,7 +98,6 @@ $today = $year . '-' . $month . '-' . $day;
                         <label for="contactNumber">Contact Number:</label>
                         <input type="tel" class="form-control" placeholder="Contact Number" id="handphone_number" name="handphone_number" 
                         pattern="[0-9]{3}-[0-9]{7}|[0-9]{3}-[0-9]{8}" required autofocus>
-                        <p style="margin:1px;font-size:9px;">*Format: 123-4567890/123-45678901</p>
                         @if ($errors->has('handphone_number'))
                                       <span class="text-danger">{{ $errors->first('handphone_number') }}</span>
                        @endif
@@ -88,7 +105,7 @@ $today = $year . '-' . $month . '-' . $day;
 
                     <div class="form-group">
                         <label for="credit_limit">Credit Limit:</label>
-                        <input type="number" class="form-control" placeholder="1000.00" id="credit_limit" name="credit_limit"  min="0.0" required autofocus>
+                        <input type="number" class="form-control" placeholder="1000.00" id="credit_limit" name="credit_limit"  min="0.0" max="2000.00" required autofocus>
                         @if ($errors->has('credit_limit'))
                                       <span class="text-danger">{{ $errors->first('credit_limit') }}</span>
                                   @endif
@@ -97,6 +114,15 @@ $today = $year . '-' . $month . '-' . $day;
 </div>
 <!-- column 3 -->
           <div class="column" style=" float: left;width: 20%;margin-left:100px; padding-top:32px;">
+
+          <div class="form-group">
+                        <label for="credit_available">Credit Available:</label>
+                        <input type="number" class="form-control" id="credit_available" name="credit_available"  min="0.0" max="2000.0" required autofocus>
+                        @if ($errors->has('credit_available'))
+                                      <span class="text-danger">{{ $errors->first('credit_available') }}</span>
+                                  @endif
+                    </div>
+
                     <div class="form-group">
                         <label for="ic">IC No.:</label>
                         <input type="text" class="form-control" placeholder="IC eg. 991114-07-7777" id="ic" name="ic"
