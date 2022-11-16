@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Admin Dashboard</title>
+        <title>E-wallet</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- Scripts -->
@@ -18,12 +18,11 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/refresh.css') }}" rel="stylesheet">
         @if(!Session::has('adminData'))
-            <script type="text/javascript">
+            <!-- <script type="text/javascript">
                 window.location.href="{{url('admin/login')}}"
-            </script>
+            </script> -->
         @endif   
         <style type="text/css">
            @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
@@ -152,18 +151,35 @@
     <nav class="navbar navbar-expand-lg navbar-laravel" style=" background-image:linear-gradient(to right,#ff914d,#ff9b4f);">
         <div class="container">
        
-                <a class="navbar-brand" href="{{route('dashboard')}}" style="color:white;display:inline;"> Restaurant App</a>
+                <a class="navbar-brand" href="{{ route('dashboard')}}" style="color:white;display:inline;">E-wallet</a>
             <!--Login & Logout-->
             <div style="float:right;margin-right:25px;"> 
                 @guest
-                   <a class="nav-link" href="{{ route('admin.login') }}" style="color:white;"><i class="fa fa-solid fa fa-right-to-bracket"></i></a>
+                   <a class="nav-link" href="{{ route('login') }}" style="color:white;"><i class="fas fa-sign-in-alt"></i></a>
                 @else
-                <a href="{{route('logout')}}" onclick="return confirm('Are you sure you want to logout?')"><i class="fa fa-solid fa fa-right-to-bracket"  style="color:white;"></i></a>
+                <a class="nav-link" href="{{ route('logout') }}" style="color:white;"><i class="fa fa-solid fa fa-right-to-bracket"></i></a>
+                   
                 @endguest
                 </div>
         </nav> 
-    <!--TopNav second--> 
-     
+    <!-- TopNav second 
+        <nav class="navbar navbar-expand-lg navbar-laravel" style="max-width : 10000px; background-image:linear-gradient(to right,#ff914d,#ff9b4f);overflow-x:scroll;">
+                <div class="topnav-link">
+                <a  href="{{ route('dashboard')}}"
+                 style="color: white;">Admin Dashboard</a>
+                 <a  href="#"
+                 style="color: white;">Food Menu</a>
+                 <a  href="#"
+                 style="color: white;">Order History</a>
+       </div>   -->
+    
+                    
+ 
+
+                     
+
+            </div>
+        </nav>
         </div>
         </nav>
         @yield('content')
