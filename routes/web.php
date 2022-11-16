@@ -41,7 +41,7 @@ Route::get('Transfer',[AdminController::class, 'transfer'])->name('transfer');
 Route::get('QrScan',[AdminController::class, 'QrScan'])->name('QrScan');
 Route::get('MemberRegistration',[AdminController::class, 'MemberRegistration'])->name('member.register');
 Route::get('BranchRegistration',[AdminController::class, 'BranchRegistration'])->name('branch.register');
-Route::get('AgentsRegistration',[AuthController::class, 'AgentsRegistration'])->name('agent.register');
+Route::get('AgentsRegistration',[AdminController::class, 'AgentsRegistration'])->name('agent.register');
 Route::get('viewMembers',[AdminController::class, 'viewMember'])->name('view.member');
 Route::get('viewBranch',[AdminController::class, 'viewBranch'])->name('view.branch');
 Route::get('viewAgents',[AdminController::class, 'viewAgents'])->name('view.agents');
