@@ -15,7 +15,9 @@ class CreateBranchesTable extends Migration
     {
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
-            $table->string('account_id')->default(3);
+            $table->string('account_id')->default(1);
+            $table->string('account_name');
+            $table->string('account_level');
             $table->string('name');
             $table->string('username');
             $table->string('email',191)->unique();
@@ -24,8 +26,10 @@ class CreateBranchesTable extends Migration
             $table->string('ic')->max(12)->nullable();
             $table->string('handphone_number')->nullable();
             $table->string('base_currency')->nullable();
-            $table->integer('balance')->unsigned();
+            $table->integer('credit_available')->unsigned();
             $table->string('address')->nullable();
+            $table->string('remark')->nullable();
+            $table->string('status')->nullable();
             $table->integer('credit_limit')->unsigned();
             $table->date('join_date');
             $table->string('created_by');
