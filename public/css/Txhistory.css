@@ -1,0 +1,111 @@
+*{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    box-sizing: border-box;
+
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+.container{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding:0 !important;
+    
+}
+nav{
+    position: sticky;
+    top: 0;
+    z-index: 10; /*Make sure it's above other content*/
+}
+.Txhistory{
+    width:100%;
+    height: 100%;
+    color: #fff;
+    text-align: center;
+    padding: 12px 20px 2px 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) ;
+    background: linear-gradient(150deg,#fdb37a,#fea967,#fb8840); 
+
+}
+.top-icon{
+    width: 100%;
+    cursor: pointer;
+
+}
+/*
+.user-img{
+    width: 100px;
+    border-radius: 50%;
+}*/
+.top-profile{
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    width: 100%;
+    padding: 12px 12px 30px 12px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    height: 100%;
+    border-radius: 5px;
+    background: linear-gradient(165deg,#ffae71,#f8a15f );
+    }
+
+.Txhistory h2{
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: 15px;  
+}
+
+.content {
+    background: #ffffff;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .content div[class^="list"] {
+    display: flex;
+    justify-content: space-between;
+    background: #e7e7ff;
+    padding:10px;
+  }
+  
+  .content div[class^="section"] {
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .content .icon {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+  
+  .content .icon.up {
+    color: #00ff00;
+    transform: rotateZ(30deg);
+  }
+  
+  .content .icon.down {
+    color: #ff0000;
+    transform: rotateZ(-150deg);
+  }
+  
+  .content .description {
+    color: #7d7d7d;
+  }
+  
+  .content .signal {
+    font-weight: bold;
+  }
+  
+  .content .signal.positive {
+    color: #00ff00;
+  }
+  
+  .content .signal.negative {
+    color: #ff0000;
+  }
+  

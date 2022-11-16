@@ -1,0 +1,54 @@
+
+body{
+    margin:0;
+    width:100%
+}
+
+input:focus{
+    -webkit-transition: all ease-in-out .15s;
+    -o-transition: all ease-in-out .15s;
+    transition: all ease-in-out .15s;
+}
+
+label{
+    font-weight: bold;
+}
+
+h5{
+    font-size:large;
+}
+.form-control{
+    height: 30px;
+}
+.form-group label{
+    font-size: 12px ;
+}
+.form-group{
+    margin-bottom: 0.5rem !important;
+}
+
+/*Placeholder*/
+.form-group ::placeholder{   /*style text*/
+    font-size: 13px;
+
+}
+.form-group :placeholder-shown{
+    padding-bottom: 8px;
+}
+/*Radio*/
+.form-group input[type="radio"] label{
+    font-size: 14px;
+} 
+
+.form-group button{
+    cursor:pointer;
+    width:200px;
+}
+
+.form-group button:hover{
+    background-color: rgb(4, 4, 208);
+}
+
+::-moz-placeholder {
+    opacity: 1;
+  }
