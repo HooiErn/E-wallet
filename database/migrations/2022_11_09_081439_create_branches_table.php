@@ -15,7 +15,7 @@ class CreateBranchesTable extends Migration
     {
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
-            $table->integer('account_id')->unsigned();
+            $table->string('account_id')->default(3);
             $table->string('name');
             $table->string('username');
             $table->string('email',191)->unique();
