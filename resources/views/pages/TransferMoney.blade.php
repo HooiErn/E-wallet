@@ -1,3 +1,5 @@
+@extends('layout')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,8 +82,8 @@
         </div>  
 
            <br><br><br>
-           <!-- Button trigger modal -->
-        <center><button class="button" data-toggle="modal" data-target="#exampleModal9">Confirm Transfer</button></center>
+       <!-- Button trigger modal -->
+       <center><button class="button" data-toggle="modal" data-target="#exampleModal9">Confirm Transfer</button></center>
         
         <!-- Modal -->
         <div class="modal fade" id="exampleModal9" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel9" aria-hidden="true" style="width:350px;">
@@ -103,7 +105,8 @@
               </div>
             </div>
           </div>
-        </div>     
+        </div>  
 
 </body>
 </html>
+@endsection
