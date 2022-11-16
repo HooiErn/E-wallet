@@ -8,7 +8,7 @@
      <!-- Styles -->
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="{{ asset('css/Transfer.css') }}" rel="stylesheet">
-    <title>Transaction History</title>
+    <title>Transaction</title>
 </head>
 <body>
     <div class="container">
@@ -22,9 +22,17 @@
    
 </div>
  </nav>
+<br>
+
+@if(Session::has('error'))
+    <div class="alert" id="error">
+        <i class="fa fa-times-circle"></i>
+        <h4 class="msg">{{Session::get('error')}}</h4>
+        <a href="#" data-dismiss="alert" class="btn">Close</a>
+    </div>
+@endif
 
 <div class="content">
-    
 <div class="col-md-10" style="max-width:99% !important;">
 <select name="phoneNumber" id="phoneNumber" style="float:left;">
     <option>
@@ -88,8 +96,8 @@
                         
         </div>
 </div>
-
-
+<br><br>
+ <a href="{{route('transfer.money')}}"><center><button class="button">Confirm</button></center></a>
 
 </body>
 </html>

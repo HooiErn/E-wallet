@@ -1,5 +1,6 @@
 @extends('layout')
 @section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,22 +11,19 @@
      <!-- Styles -->
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="{{ asset('css/Transfer.css') }}" rel="stylesheet">
-    <title>Transaction</title>
+    <title>Transfer</title>
 </head>
-
-
 
 <style>
     .top-profile{
-    display: flex;
-    justify-content: space-between;
     text-align: left;
     width: 100%;
-    padding: 12px 12px 30px 12px;
+    padding: 12px 12px 80px 12px;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     height: 100%;
     border-radius: 5px;
     background: #00008B;
+    margin-bottom:10px;
     }
 
     .my-button{
@@ -48,6 +46,7 @@
         border-radius: 15px;
     }
 </style>
+
 <body>
     <div class="container">
         <nav>
@@ -62,28 +61,29 @@
  </nav>
 <br>
  <h5>Transfer To</h5>
- <div class="top-profile" style="height:60px;">
+ <div class="top-profile" style="height:80px;">
             <h2 style="color:white;">Danny</h2>
-            <h5 style="color:white;">+60 16-543 3202</h5>
+            <span style="color:white;">+60 16-543 3202</span>
         </div>
         
-<div class="content">
+<div class="content" >
             <input type="search" id="search" class="search" placeholder="Amount" style="width:350px;">
-            <h6>You can transfer up to RM 2000</h6>
-        </div>  
-            <a href="#"><button class="my-button">RM50</button></a>
+            <center><h6 style="color:red;"> You can transfer up to RM 2000</h6></center>
+        
+             &nbsp; &nbsp; &nbsp; &nbsp; <a href="#"><button class="my-button">RM50</button></a>
             <a href="#"><button class="my-button">RM100</button></a>
             <a href="#"><button class="my-button">RM150</button></a>
             <a href="#"><button class="my-button">RM200</button></a>
             <a href="#"><button class="my-button">Others</button></a>
+</div>  
 
             <div class="content">
             <input type="search" id="search" class="search" placeholder="What's the transfer for?" style="width:350px;">
         </div>  
 
            <br><br><br>
-       <!-- Button trigger modal -->
-       <center><button class="button" data-toggle="modal" data-target="#exampleModal9">Confirm Transfer</button></center>
+           <!-- Button trigger modal -->
+        <center><button class="button" data-toggle="modal" data-target="#exampleModal9">Confirm Transfer</button></center>
         
         <!-- Modal -->
         <div class="modal fade" id="exampleModal9" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel9" aria-hidden="true" style="width:350px;">
@@ -96,7 +96,7 @@
                 </button>
               </div>
               <div class="modal-body">
-              <input type="search" id="search" class="search" placeholder="Password" style="width:250px;">
+              <input type="search" id="search" class="search" placeholder="Password" style="width:290px;">
               </div>
         
               <div class="modal-footer">
@@ -105,8 +105,10 @@
               </div>
             </div>
           </div>
-        </div>  
+        </div>     
 
 </body>
 </html>
+
+@include('auth.money')
 @endsection
