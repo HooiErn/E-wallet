@@ -20,11 +20,11 @@
         <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/refresh.css') }}" rel="stylesheet">
-        @if(!Session::has('adminData'))
+        <!-- @if(!Session::has('adminData'))
             <script type="text/javascript">
                 window.location.href="{{url('admin/login')}}"
             </script>
-        @endif   
+        @endif    -->
         <style type="text/css">
            @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
   
@@ -153,14 +153,7 @@
         <div class="container">
        
         &nbsp;<a class="navbar-brand" href="#" style="color:white;display:inline;"> MY Balance: RM2000</a> 
-            <!--Login & Logout-->
-            <div style="float:right;margin-right:25px;"> 
-                @guest
-                   <a class="nav-link" href="{{ route('admin.login') }}" style="color:white;"><i class="fa fa-solid fa fa-right-to-bracket"></i></a>
-                @else
-                  
-                @endguest
-                </div>
+           
         </nav> 
     <!--TopNav second--> 
      

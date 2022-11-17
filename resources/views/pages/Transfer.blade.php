@@ -46,7 +46,7 @@
             <input type="search" id="search" name="search" placeholder="Enter phone number.." style="float:left;" required>
          </div>        
 </div>  
-
+<br><br>
 <div class="recently">
          <h5>Recently</h5>
          <div class="list">
