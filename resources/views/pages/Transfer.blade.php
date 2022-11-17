@@ -42,7 +42,8 @@
        +65
     </option>
 </select>
-            <input type="search" id="search" name="search" placeholder="Enter phone number.." style="float:left;">
+<form action="{{route('transfer.money')}}"> 
+            <input type="search" id="search" name="search" placeholder="Enter phone number.." style="float:left;" required>
          </div>        
 </div>  
 
@@ -97,7 +98,8 @@
         </div>
 </div>
 <br><br>
- <a href="{{route('transfer.money')}}"><center><button class="btn btn-primary">Confirm</button></center></a>
 
+ <center><button class="btn btn-primary">Confirm</button></center>
+ </form>
 </body>
 </html>
