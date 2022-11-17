@@ -76,6 +76,50 @@
     .search{
         border-radius: 15px;
     }
+
+    .text{
+        border-radius: 15px;
+    }
+
+    input[type=text] {
+    font-size: 13px;
+    padding:12px;
+    border: 1px solid grey;
+    outline: none;
+    float: right;
+    background: #f1f1f1;
+    height:40px;
+    position:relative;
+    margin-bottom:10px;
+    margin-top:10px;
+    width: 70%;
+  }
+
+  input[type=text]:focus{
+    background-color: aliceblue;
+  }
+
+  .amount{
+        border-radius: 15px;
+    }
+
+    input[type=number] {
+    font-size: 13px;
+    padding:12px;
+    border: 1px solid grey;
+
+    float: right;
+    background: #f1f1f1;
+    height:40px;
+    position:relative;
+    margin-bottom:10px;
+    margin-top:10px;
+    width: 70%;
+  }
+
+  input[type=number]:focus{
+    background-color: aliceblue;
+  }
 </style>
 
 
@@ -115,24 +159,31 @@ function myFunction5() {
             <h2 style="color:white;">Danny</h2>
             <span style="color:white;">+60 16-543 3202</span>
         </div>
+        
 <div class="content" >
-            <input type="search" id="amount" class="search" placeholder="Amount" style="width:350px;" required>
+
+&nbsp; &nbsp;
+<input type="number" id="amount" name="amount" class="amount" placeholder="Amount" 
+style="width:345px; height:40px;" min="1" max="2000" value="1" required autofocus>
+
+            <br>
             <center><h6 style="color:red;"> You can transfer up to RM 2000</h6></center>
         
-             &nbsp; &nbsp; &nbsp; &nbsp; <button class="my-button1" onclick="myFunction1()">RM20</button>
+            &nbsp; &nbsp; &nbsp; &nbsp; <button class="my-button1" onclick="myFunction1()">RM20</button>
              <button class="my-button2" onclick="myFunction2()">RM50</button>
              <button class="my-button3" onclick="myFunction3()">RM100</button>
              <button class="my-button4" onclick="myFunction4()">RM150</button>
              <button class="my-button5" onclick="myFunction5()">RM200</button>
 </div>  
-
+  <br>
             <div class="content">
-            <input type="search" id="search" class="search" placeholder="What's the transfer for?" style="width:350px;" required>
+            <input type="text" id="text" class="text" placeholder=" What's the transfer for?" style="width:345px; height:40px;" required>
         </div>  
      
-           <br><br><br>
+           <br>
            <!-- Button trigger modal -->
-        <center><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal9">Confirm Transfer</button></center>
+        <center><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal9" 
+        >Confirm Transfer</button></center>
        
         <!-- Modal -->
         <div class="modal fade" id="exampleModal9" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel9" aria-hidden="true" style="width:350px;">
@@ -145,20 +196,17 @@ function myFunction5() {
                 </button>
               </div>
 
-              
+              <form action="{{route('home')}}"> 
               <div class="modal-body">
               <input type="search" id="search" class="search" placeholder="Password" style="width:290px;" required>
               </div>
+               <center><button class="btn btn-success">Confirm</button></center>
+              </form>
 
-              <div class="modal-footer">
-           <button type="button" class="btn btn-success">Confirm</button>
-              </div>
-              
             </div>
           </div>
         </div>     
        
-
 </body>
 </html>
 
