@@ -21,7 +21,7 @@ $today = $year . '-' . $month . '-' . $day;
                         @endif
             <br>
             <div class="column" style=" float: left; width: 20%;">
-             <h5>Create Members</h5>
+             <h5>Edit Members</h5>
                  <form method="POST" action="#">
                     {{ csrf_field() }}
 
