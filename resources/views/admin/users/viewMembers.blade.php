@@ -117,7 +117,6 @@
                         <label for="address">Address:</label>
                         <input type="text" class="form-control" placeholder="Enter address"
                          id="address" name="address" style="width:160px;"  value=""  required autofocus>
- 
                     </div>
 
                   </div>

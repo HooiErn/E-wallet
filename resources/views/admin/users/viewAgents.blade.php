@@ -89,8 +89,7 @@
                         <input type="email" class="form-control" placeholder="Email" 
                         id="email" name="email" style="width:160px;"  value="" required autofocus>
  
-                    </div>
-                    
+                    </div>         
 
                     <div class="form-group"   style="margin-top:20px;">
                         <label for="ic">IC Number:</label>
