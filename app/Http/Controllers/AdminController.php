@@ -107,7 +107,18 @@ public function viewBranch(){
 public function viewAgents(){
     return view('pages.viewAgents');
 }
-
+//UpdateMember
+public function updateMember(){
+    return view('pages.updateMembers');
+}
+//updateBranch 
+public function updateBranch(){
+    return view('pages.updateBranch');
+}
+//updateAgents 
+public function updateAgents(){
+    return view('pages.updateAgents');
+}
   //postRegisterBranches
 public function postRegisterBranches(Request $r)
 {

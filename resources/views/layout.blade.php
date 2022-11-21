@@ -19,11 +19,11 @@
        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
         <link href="{{ asset('css/refresh.css') }}" rel="stylesheet">
-        @if(!Session::has('adminData'))
+        <!-- @if(!Session::has('adminData'))
             <script type="text/javascript">
                 window.location.href="{{url('admin/login')}}"
             </script>
-        @endif   
+        @endif    -->
         <style type="text/css">
            @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
   
