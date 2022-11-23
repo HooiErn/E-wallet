@@ -11,7 +11,7 @@
 <div class="content">
     <div class="dashboard">
           <h4> Hello, Branch</h4>
-             <button style="width:50px;height:30px; font-size:12px;padding:0;" class="btn btn-primary" onclick= "window.location.href = '/AgentsRegistration';">Create Agents</button>
+             <button style="width:80px;height:30px; font-size:12px;padding:0;" class="btn btn-primary" onclick= "window.location.href = '/AgentsRegistration';">Create Agents</button>
 
              <table class="table-bordered">
                 <thead>
