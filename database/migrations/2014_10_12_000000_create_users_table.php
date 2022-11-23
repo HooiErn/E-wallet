@@ -32,7 +32,9 @@ class CreateUsersTable extends Migration
             $table->string('status')->nullable();
             $table->integer('credit_limit')->unsigned();
             $table->date('join_date');
+            $table->integer('type')->unsigned();
             $table->string('created_by');
+            $table->string('deleted_by')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
