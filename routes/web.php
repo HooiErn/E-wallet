@@ -32,6 +32,8 @@ Route::get('admin/logout', [AdminController::class, 'logout']);
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
 Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register');
+// Route::post('post-register-branches',[AdminController::class, 'postRegisterBranches'])->name('register.branch.post');
+// Route::post('post-register-agents',[AdminController::class, 'postRegisterAgents'])->name('register.agent.post');
 
 
 //Route for editing and updating users' information
@@ -42,10 +44,14 @@ Route::get('QrScan',[AdminController::class, 'QrScan'])->name('QrScan');
 Route::get('MemberRegistration',[AdminController::class, 'MemberRegistration'])->name('member.register');
 Route::get('BranchRegistration',[AdminController::class, 'BranchRegistration'])->name('branch.register');
 Route::get('AgentsRegistration',[AdminController::class, 'AgentsRegistration'])->name('agent.register');
+Route::get('AdminsRegistration',[AdminController::class, 'AdminRegistration'])->name('admin.register');
 Route::get('viewMembers',[AdminController::class, 'viewMember'])->name('view.member');
 Route::get('viewBranch',[AdminController::class, 'viewBranch'])->name('view.branch');
 Route::get('viewAgents',[AdminController::class, 'viewAgents'])->name('view.agents');
 Route::get('TransferMoney',[AdminController::class, 'transferMoney'])->name('transfer.money');
+Route::get('enterPassword',[AdminController::class, 'enterPassword'])->name('enterPassword');
+//Testing
+Route::get('test',[AdminController::class, 'Testing'])->name('test');
 
 
 //Change Password
@@ -54,7 +60,9 @@ Route::post('update-password',[AuthController::class, 'updatePassword'])->name('
 
 Route::get('profile', [AuthController::class, 'profile'])->name('profile');  
 Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
-
+Route::get('admin/dashboard',[AdminController::class, 'adminDashboard'])->name('admin.dashboard');
+Route::get('branch/dashboard',[AuthController::class, 'branchDashboard'])->name('branch.dashboard');
+Route::get('agent/dashboard',[AuthController::class, 'agentDashboard'])->name('agent.dashboard');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 //Route for providing support if user forget password

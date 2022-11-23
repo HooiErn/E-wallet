@@ -73,15 +73,33 @@
         width: 300px;
     }
 
-    .search{
-        border-radius: 15px;
-    }
-
     .text{
         border-radius: 15px;
     }
 
-    input[type=text] {
+    .input[type=text] {
+    font-size: 13px;
+    padding:12px;
+  
+    outline: none;
+    float: right;
+  
+    height:40px;
+    position:relative;
+    margin-bottom:10px;
+    margin-top:10px;
+    width: 70%;
+  }
+
+  .input[type=text]:focus{
+    background-color: aliceblue;
+  }
+
+  .amount{
+        border-radius: 15px;
+    }
+
+    .input[type=number] {
     font-size: 13px;
     padding:12px;
     border: 1px solid grey;
@@ -95,29 +113,7 @@
     width: 70%;
   }
 
-  input[type=text]:focus{
-    background-color: aliceblue;
-  }
-
-  .amount{
-        border-radius: 15px;
-    }
-
-    input[type=number] {
-    font-size: 13px;
-    padding:12px;
-    border: 1px solid grey;
-
-    float: right;
-    background: #f1f1f1;
-    height:40px;
-    position:relative;
-    margin-bottom:10px;
-    margin-top:10px;
-    width: 70%;
-  }
-
-  input[type=number]:focus{
+  .input[type=number]:focus{
     background-color: aliceblue;
   }
 </style>
@@ -162,11 +158,9 @@ function myFunction5() {
         
 <div class="content" >
 
-&nbsp; &nbsp;
-<input type="number" id="amount" name="amount" class="amount" placeholder="Amount" 
-style="width:345px; height:40px;" min="1" max="2000" value="1" required autofocus>
+<form action="/enterPassword">
+&nbsp; &nbsp;<input type="number" id="amount" name="amount" class="amount" placeholder="Amount" style="width:345px; height:40px;" min="1" max="2000" required>
 
-            <br>
             <center><h6 style="color:red;"> You can transfer up to RM 2000</h6></center>
         
             &nbsp; &nbsp; &nbsp; &nbsp; <button class="my-button1" onclick="myFunction1()">RM20</button>
@@ -174,39 +168,15 @@ style="width:345px; height:40px;" min="1" max="2000" value="1" required autofocu
              <button class="my-button3" onclick="myFunction3()">RM100</button>
              <button class="my-button4" onclick="myFunction4()">RM150</button>
              <button class="my-button5" onclick="myFunction5()">RM200</button>
-</div>  
-  <br>
-            <div class="content">
+             <br><br>
+             <div class="content">
             <input type="text" id="text" class="text" placeholder=" What's the transfer for?" style="width:345px; height:40px;" required>
-        </div>  
-     
-           <br>
-           <!-- Button trigger modal -->
-        <center><button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal9" 
-        >Confirm Transfer</button></center>
-       
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal9" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel9" aria-hidden="true" style="width:350px;">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel9">Please enter your password</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-
-              <form action="{{route('home')}}"> 
-              <div class="modal-body">
-              <input type="search" id="search" class="search" placeholder="Password" style="width:290px;" required>
-              </div>
-               <center><button class="btn btn-success">Confirm</button></center>
-              </form>
-
-            </div>
-          </div>
-        </div>     
-       
+          </div> 
+          <br>
+             <center><input type="submit" class="btn btn-primary"></center>
+             </form>
+</div>  
+  
 </body>
 </html>
 
