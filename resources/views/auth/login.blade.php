@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<script type="text/javascript">
+$(document).on('click', '.toggle-password', function() {
+
+$(this).toggleClass(" fa-eye fa-eye-slash");
+
+var input = $("#password");
+input.attr('type') === 'password' ? input.attr('type','text') : input.attr('type','password')
+});
+</script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -11,13 +20,10 @@
                     <form method="POST" action="{{ route('login.post') }}">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="Username" class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
-
                             <div class="row mb-3">
                               <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
                               <div class="col-md-6">
-                              <input type="text" id="username" class="form-control" name="username" placeholder="Your Username" required @if(Cookie::has('username')) value="{{Cookie::get('username')}}" @endif>
+                              <input type="text" id="username" class="form-control" name="username" placeholder="Enter Username" required @if(Cookie::has('username')) value="{{Cookie::get('username')}}" @endif>
                                   @if ($errors->has('username'))
                                       <span class="text-danger">{{ $errors->first('username') }}</span>
                                   @endif
@@ -28,7 +34,7 @@
                               <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                               <div class="col-md-6" style='white-space: nowrap'>
                               <i toggle="#password-field" class="fa-fw fa fa-eye-slash field_icon toggle-password" 
-                              style="position:absolute;margin-left:24rem;margin-top:0.7rem;color:grey;"></i>
+                              style="position:absolute;margin-left:18.5rem;margin-top:0.7rem;color:grey;"></i>
                               <input type="password" id="password" class="form-control" name="password" placeholder="Password" required @if(Cookie::has('password')) value="{{Cookie::get('password')}}" @endif>
                            
                             
