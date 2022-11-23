@@ -11,6 +11,9 @@ class UserPolicy
 
     const ADMIN = 'admin';
     const AGENT = 'agent';
+    const MEMBER = 'member';
+    const BRANCH = 'branch';
+    const SUBADMIN = 'subadmin';
 
     public function admin(User $user): bool
     {
@@ -21,4 +24,19 @@ class UserPolicy
     {
         return $user->isAgent();
     }
+
+    public function member(User $user): bool
+    {
+        return $user->isMember();
+    }
+
+    public function branch(User $user): bool
+    {
+        return $user->isBranch();
+    }
+
+    // public function subadmin(User $user): bool
+    // {
+    //     return $user->isSubadmin();
+    // }
 }

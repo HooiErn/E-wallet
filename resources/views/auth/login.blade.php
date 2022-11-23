@@ -8,36 +8,35 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login.post') }}">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="Username" class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+                            <div class="row mb-3">
+                              <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
+                              <div class="col-md-6">
+                              <input type="text" id="username" class="form-control" name="username" placeholder="Your Username" required @if(Cookie::has('username')) value="{{Cookie::get('username')}}" @endif>
+                                  @if ($errors->has('username'))
+                                      <span class="text-danger">{{ $errors->first('username') }}</span>
+                                  @endif
+                              </div>
+                          </div>
+  
+                          <div class="form-group row">
+                              <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                              <div class="col-md-6" style='white-space: nowrap'>
+                              <i toggle="#password-field" class="fa-fw fa fa-eye-slash field_icon toggle-password" 
+                              style="position:absolute;margin-left:24rem;margin-top:0.7rem;color:grey;"></i>
+                              <input type="password" id="password" class="form-control" name="password" placeholder="Password" required @if(Cookie::has('password')) value="{{Cookie::get('password')}}" @endif>
+                           
+                            
+                              @if ($errors->has('password'))
+                                      <span class="text-danger">{{ $errors->first('password') }}</span>
+                                  @endif
+                              </div>
+                          </div>
 
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">

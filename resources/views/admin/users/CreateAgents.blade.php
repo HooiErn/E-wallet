@@ -22,12 +22,12 @@ $today = $year . '-' . $month . '-' . $day;
             <br>
             <div class="column" style=" float: left; width: 20%;">
              <h5>Create Agents</h5>
-                 <form method="POST" action="#">
+                 <form method="POST" action="{{ route('register') }}">
                     {{ csrf_field() }}
 
                     <div class="form-group">
-                        <label for="account_id">Account ID:</label>
-                        <input type="text" class="form-control" placeholder="Account ID" id="account_id" name="account_id"  min="0" required autofocus>
+                        <!-- <label for="account_id">Account ID:</label> -->
+                        <input type="hidden" class="form-control" placeholder="Account ID" id="account_id" name="account_id" value="1" min="0" required autofocus>
                         @if ($errors->has('account_id'))
                                       <span class="text-danger">{{ $errors->first('account_id') }}</span>
                                   @endif
@@ -41,7 +41,9 @@ $today = $year . '-' . $month . '-' . $day;
                                   @endif
                     </div>
 
-                    <div class="form-group">
+                    <input type="hidden" class="form-control" id="account_level" name="account_level" value="3" min="3" required autofocus>
+
+                    <!-- <div class="form-group">
                         <label for="account_level">Account Level:</label><br>
                         <select id="account_level" name="account_level" style="width:100%;height:28px;border:white 1px solid;;box-shadow:#d0d6dc 0.5px 0.5px 0.5px 2px;font-size:15px;">
                             <option value="Agents">Agents</option>
@@ -49,7 +51,7 @@ $today = $year . '-' . $month . '-' . $day;
                         @if ($errors->has('account_level'))
                                       <span class="text-danger">{{ $errors->first('account_level') }}</span>
                                   @endif
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <label for="join_date">Join Date:</label>
@@ -80,7 +82,7 @@ $today = $year . '-' . $month . '-' . $day;
 
                 <div class="form-group">
                         <label for="login_id">Login ID:</label>
-                        <input type="text" class="form-control" placeholder="Username" id="login_id" name="login_id"  required autofocus>
+                        <input type="text" class="form-control" placeholder="Username" id="username" name="username"  required autofocus>
                         @if ($errors->has('username'))
                                       <span class="text-danger">{{ $errors->first('username') }}</span>
                                   @endif
@@ -142,7 +144,17 @@ $today = $year . '-' . $month . '-' . $day;
                                         @if($errors->has('password_confirmation'))
                                         <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
                                     @endif
-                                </div> 
+                                </div>
+
+                    <!-- <div class="form-group" >
+                        <label for="created_by">Created By:</label>
+                        <input type="text" class="form-control" placeholder="Your Name" id="created_by" name="created_by"  required autofocus>
+                        @if ($errors->has('created_by'))
+                                      <span class="text-danger">{{ $errors->first('created_by') }}</span>
+                                  @endif
+                    </div> -->
+
+                    <input type="hidden" class="form-control" id="created_by" name="created_by"  value="{{auth()->user()->name}}" required autofocus>
 
                     <div class="form-group" style="text-align:center;"><br>
                         <button  type="submit" class="btn btn-primary" style="width:100%;">Submit</button>

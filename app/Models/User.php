@@ -12,6 +12,12 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const DEFAULT = 4;
+    const AGENT = 3;
+    const BRANCH = 2;
+    //const SUBADMIN = 2;
+    const ADMIN = 1;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -36,6 +42,7 @@ class User extends Authenticatable
         'credit_limit',
         'join_date',
         'created_by',
+        'deleted_by',
     ];
 
     /**
@@ -56,6 +63,35 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    public function accLevel()
+    {
+        return (int) $this->account_level;
+    }
 
+    public function isAdmin(): bool
+    {
+        return $this->accLevel() === self::ADMIN;
+    }
+
+    public function isAgent(): bool
+    {
+        return $this->accLevel() === self::AGENT;
+    }
+
+    public function isMember(): bool
+    {
+        return $this->accLevel() === self::DEFAULT;
+    }
+
+    // public function isSubadmin(): bool
+    // {
+    //     return $this->accLevel() === self::SUBADMIN;
+    // }
+
+    public function isBranch(): bool
+    {
+        return $this->accLevel() === self::BRANCH;
+    }
 
 }
