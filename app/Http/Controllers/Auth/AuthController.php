@@ -45,6 +45,9 @@ class AuthController extends Controller
             else if(Auth::user()->isAgent()){
                 return redirect()->route('agent.dashboard');
             }
+            else{
+                return redirect()->route('');
+            }
         }
 
         return redirect('admin/dashboard');
