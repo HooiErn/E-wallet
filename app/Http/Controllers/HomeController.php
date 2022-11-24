@@ -265,4 +265,42 @@ class HomeController extends Controller
 
         return redirect('home');
     }
+    public function pay($id){
+      
+        //Log in user wallet
+       $user = User::where('id',Auth::id())->first();
+
+       if($user-> hasWallet('default')){
+           $wallet = $user->wallet;
+       }
+       elseif($user-> hasWallet('my-wallet')){
+           $wallet = $user->getWallet('my-wallet');
+       }
+       else{
+           $wallet = $user->createWallet([
+               'name' => 'New Wallet',
+               'slug' => 'my-wallet',
+           ]);
+       }
+
+       //Log in user history
+       $walletHistory = DB::table('wallets')
+       ->leftjoin('transactions','wallets.id','=','transactions.wallet_id')
+       ->where('wallets.holder_id',Auth::user()->id)
+       ->get();
+
+       // $walletHistory = DB::table('wallets')
+       // ->leftjoin('transactions','wallets.id','=','transactions.wallet_id')
+       // ->leftjoin('transfers', 'wallet.id','=','transfers.from_id')
+       // ->where(function($query){
+       //      ->select('transfers.*','transfers.status as typeTransfer')
+       //})
+       // ->where('wallets.holder_id',Auth::user()->id)
+       // ->get();
+
+       //All users wallet
+       $users = DB::table('users')->leftjoin('wallets','users.id','=','wallets.holder_id')->select('users.*','wallets.balance as wBalance')->get();
+
+       return view('pages.pay', compact('wallet','walletHistory','user'));
+    }
 }

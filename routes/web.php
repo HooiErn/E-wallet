@@ -45,12 +45,15 @@ Route::get('MemberRegistration',[AdminController::class, 'MemberRegistration'])-
 Route::get('BranchRegistration',[AdminController::class, 'BranchRegistration'])->name('branch.register');
 Route::get('AgentsRegistration',[AdminController::class, 'AgentsRegistration'])->name('agent.register');
 Route::get('AdminsRegistration',[AdminController::class, 'AdminRegistration'])->name('admin.register');
-Route::post('update' ,[AdminController::class,'update'])->name('user.update');
+Route::resource('/update' ,[AdminController::class,'update'])->name('user.update');
 Route::get('viewMembers',[AdminController::class, 'viewMember'])->name('view.member');
 Route::get('viewBranch',[AdminController::class, 'viewBranch'])->name('view.branch');
 Route::get('viewAgents',[AdminController::class, 'viewAgents'])->name('view.agents');
 Route::get('TransferMoney',[AdminController::class, 'transferMoney'])->name('transfer.money');
 Route::get('enterPassword',[AdminController::class, 'enterPassword'])->name('enterPassword');
+
+//Scan to pay
+Route::get('pay/{id}',[HomeController::class, 'pay'])->name('view.pay');
 
 //Testing
 Route::get('testing',[AdminController::class, 'Testing'])->name('test');
