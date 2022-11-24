@@ -17,208 +17,32 @@
 
             <div class="top-icon">
                <a href="{{route('home')}}"><i class="fas fa-arrow-left" style="float:left;margin-top:5px;color:white;"></i> </a> 
-            <p style="margin-top:5px;font-weight:bold;font-size:18px;">History</p>
+            <p style="margin-top:5px;font-weight:bold;font-size:18px;">Transaction History</p>
         </div>
 </div>
 </nav>
 
 <div class="content">
-                <div class="list1">
-                        <div class="section1">
-                            <div class="icon down">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="text">
-                                <div class="title">Gift Card #22338</div>
-                                <div class="description">Today, 13:35</div>
-                            </div>
-                        </div>
-                        <div class="section2">
-                            <div class="signal negative">-</div>
-                            <div class="value">RM198.25</div>
-                        </div>
-                    </div>
-                    <div class="list2">
-                        <div class="section1">
-                            <div class="icon up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="text">
-                                <div class="title">Self Deposit CIMB BANK</div>
-                                <div class="description">Today, 13:45</div>
-                            </div>
-                        </div>
-                        <div class="section2">
-                            <div class="signal positive">+</div>
-                            <div class="value">RM260.00</div>
-                        </div>
-                    </div>
-                    <div class="list2">
-                        <div class="section1">
-                            <div class="icon up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="text">
-                                <div class="title">Self Deposit CIMB BANK</div>
-                                <div class="description">Today, 13:45</div>
-                            </div>
-                        </div>
-                        <div class="section2">
-                            <div class="signal positive">+</div>
-                            <div class="value">RM260.00</div>
-                        </div>
-                    </div>
-                    <div class="list1">
-                        <div class="section1">
-                            <div class="icon down">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="text">
-                                <div class="title">Gift Card #22338</div>
-                                <div class="description">Today, 14:45</div>
-                            </div>
-                        </div>
-                        <div class="section2">
-                            <div class="signal negative">-</div>
-                            <div class="value">RM138.25</div>
-                        </div>
-                    </div>
-                    <div class="list2">
-                        <div class="section1">
-                            <div class="icon up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="text">
-                                <div class="title">Self Deposit CIMB BANK</div>
-                                <div class="description">Today, 15:45</div>
-                            </div>
-                        </div>
-                        <div class="section2">
-                            <div class="signal positive">+</div>
-                            <div class="value">RM160.00</div>
-                        </div>
-                    </div>
-                    <div class="list2">
-                        <div class="section1">
-                            <div class="icon up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="text">
-                                <div class="title">Self Deposit CIMB BANK</div>
-                                <div class="description">Today, 15:45</div>
-                            </div>
-                        </div>
-                        <div class="section2">
-                            <div class="signal positive">+</div>
-                            <div class="value">RM30.00</div>
-                        </div>
-                    </div>
-                    <div class="list2">
-                        <div class="section1">
-                            <div class="icon up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="text">
-                                <div class="title">Self Deposit CIMB BANK</div>
-                                <div class="description">Today, 15:45</div>
-                            </div>
-                        </div>
-                        <div class="section2">
-                            <div class="signal positive">+</div>
-                            <div class="value">RM260.00</div>
-                        </div>
-                    </div>
-                    <div class="list2">
-                        <div class="section1">
-                            <div class="icon up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="text">
-                                <div class="title">Self Deposit CIMB BANK</div>
-                                <div class="description">Today, 16:45</div>
-                            </div>
-                        </div>
-                        <div class="section2">
-                            <div class="signal positive">+</div>
-                            <div class="value">RM260.00</div>
-                        </div>
-                    </div>
-                    <div class="list2">
-                        <div class="section1">
-                            <div class="icon up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="text">
-                                <div class="title">Self Deposit CIMB BANK</div>
-                                <div class="description">Today, 16:45</div>
-                            </div>
-                        </div>
-                        <div class="section2">
-                            <div class="signal positive">+</div>
-                            <div class="value">RM260.00</div>
-                        </div>
-                    </div>
-                    <div class="list2">
-                        <div class="section1">
-                            <div class="icon up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="text">
-                                <div class="title">Self Deposit CIMB BANK</div>
-                                <div class="description">Today, 16:45</div>
-                            </div>
-                        </div>
-                        <div class="section2">
-                            <div class="signal positive">+</div>
-                            <div class="value">RM260.00</div>
-                        </div>
-                    </div>
-                    <div class="list2">
-                        <div class="section1">
-                            <div class="icon up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="text">
-                                <div class="title">Self Deposit CIMB BANK</div>
-                                <div class="description">Today, 16:45</div>
-                            </div>
-                        </div>
-                        <div class="section2">
-                            <div class="signal positive">+</div>
-                            <div class="value">RM260.00</div>
-                        </div>
-                    </div>
-                    <div class="list2">
-                        <div class="section1">
-                            <div class="icon up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="text">
-                                <div class="title">Self Deposit CIMB BANK</div>
-                                <div class="description">Today, 17:45</div>
-                            </div>
-                        </div>
-                        <div class="section2">
-                            <div class="signal positive">+</div>
-                            <div class="value">RM260.00</div>
-                        </div>
-                    </div>
-                    <div class="list2">
-                        <div class="section1">
-                            <div class="icon up">
-                                <i class="fas fa-arrow-up"></i>
-                            </div>
-                            <div class="text">
-                                <div class="title">Self Deposit CIMB BANK</div>
-                                <div class="description">Today, 17:45</div>
-                            </div>
-                        </div>
-                        <div class="section2">
-                            <div class="signal positive">+</div>
-                            <div class="value">RM260.00</div>
-                        </div>
-                    </div>
 
+@foreach($walletHistory as $history)
+<div class="list1">
+                        <div class="section1">
+                            <div class="icon up" style="color:red;">
+                            {{$loop -> iteration}}
+                            </div>
+                            &nbsp;&nbsp;
+                            <div class="text">
+                                <div class="title">{{$history -> type}}</div>
+                                <div class="description">{{$history -> created_at}}</div>
+                            </div>
+                        </div>
+                        <div class="section2">
+                            <div class="value">  {{$history -> amount}} </div>
+                        </div>                     
+</div>
+@endforeach
+</div>
+      
 </div>
 
 
