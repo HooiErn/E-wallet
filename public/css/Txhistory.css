@@ -85,7 +85,7 @@ nav{
   
   .content .icon.up {
     color: #00ff00;
-    transform: rotateZ(30deg);
+
   }
   
   .content .icon.down {
@@ -108,4 +108,10 @@ nav{
   .content .signal.negative {
     color: #ff0000;
   }
-  
+
+  .text-success {
+    color: #36bea6 !important; 
+  }
+    .text-danger {
+    color: #f62d51 !important;
+  }

@@ -7,10 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Bavix\Wallet\Traits\HasWallets;
+use Bavix\Wallet\Traits\CanPay;
+use Bavix\Wallet\Interfaces\Customer;
+use Bavix\Wallet\Traits\HasWallet;
+use Bavix\Wallet\Interfaces\Wallet;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasWallet, HasWallets;
 
     const DEFAULT = 4;
     const AGENT = 3;

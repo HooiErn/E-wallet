@@ -32,20 +32,23 @@
                             </div>
                             &nbsp;&nbsp;
                             <div class="text">
+                          
                                 <div class="title">{{$history -> type}}</div>
+                               
                                 <div class="description">{{$history -> created_at}}</div>
                             </div>
                         </div>
+
                         <div class="section2">
-                            <div class="value">  {{$history -> amount}} </div>
-                        </div>                     
+                        @if ($history -> type == 'deposit')
+                        <span class="text-success">{{$history -> amount}}</span> 
+                      @else
+                      <span class="text-danger">{{$history -> amount}}</span>
+                      @endif
+                        </div>      
+
 </div>
 @endforeach
 </div>
-      
-</div>
-
-
-
 </body>
 </html>

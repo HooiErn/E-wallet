@@ -101,9 +101,15 @@ public function transferMoney(){
    public function profile(){
     return view('pages.profile');
 }
-//Transaction History
-public function transactionHistory(){
-    return view('pages.transactionHistory');
+   //Show History
+   public function showHistory(){
+    $users = DB::table('transactions')
+    ->leftjoin('users','transactions.payable_id','=','users.id')
+    ->select('transactions.*','users.loginID as holderName')
+    ->get();
+
+
+    return view('pages.transactionHistory', compact('users'));
 }
 //Home
 public function home(){
@@ -112,7 +118,8 @@ public function home(){
 
 //ViewMember
 public function viewMember(){
-    return view('admin.users.viewMembers');
+    $users = DB::table('users')->select('users.*')->where('account_level','4')->get();
+    return view('admin.users.viewMembers')->with(["users" => $users]);
 }
 //ViewBranch 
 public function viewBranch(){
@@ -128,6 +135,74 @@ public function enterPassword(){
     return view('pages.enterPassword');
     }
     
+      //Show Wallet
+      public function showWallet(){
+        $users = User::all();
+        foreach($users as $user){
+            if($user -> hasWallet('my-wallet')){
+                $wallet = $user -> getWallet('my-wallet');
+            }
+            else{
+                $wallet = $user->createWallet([
+                    'name' => 'New Wallet',
+                    'slug' => 'my-wallet',
+                ]);
+            } 
+        }
+
+        $wallets = DB::table('wallets')
+        ->leftjoin('users','wallets.holder_id','=','users.id')
+        ->select('wallets.*','users.loginID as uName')
+        ->get();
+        return view('admin/wallet', compact('users','wallets'));
+    }
+
+    //Update
+    public function update(Request $r)
+    {
+        $users = User::find($r->id);
+        $r->validate([
+            'name' => 'required',
+            'account_name' => 'required',
+            'account_id' => 'required',
+            'account_level' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+            'email' => 'required',
+            'join_date' => 'required',
+            'base_currency' => 'nullable',
+            'handphone_number' => 'nullable',
+            'credit_limit' => 'required',
+            'credit_available' => 'required',
+            'ic' => 'nullable',
+            'created_by' => 'required',
+        ]);
+        $users->name = $r->name;
+        $users->account_id = $r->account_id;
+        $users->account_name = $r->account_name;
+        $users->account_level = $r->account_level;
+        $users->username = $r->username;
+        $users->password = Hash::make($r->password);
+        $users->email = $r->email;
+        $users->handphone_number = $r->handphone_number;  
+        $users->ic = $r->ic;
+        $users->join_date = $r->join_date;
+        $users->base_currency = $r->base_currency;
+        $users->credit_limit = $r->credit_limit;
+        $users->credit_available = $r->credit_available;
+        $users->save();
+
+        Session::flash('success',"User was updated successfully!");
+        if($users->type == 4){
+            return redirect()->route('view.member');
+        }
+        else if($users->type == 3){
+            return redirect()->route('view.agent');
+        }else if($users->type == 2){
+            return redirect()->route('view.branch');
+        }
+        
+    }
 
 //postRegisterBranches
 // public function postRegisterBranches(Request $r)

@@ -46,7 +46,7 @@ class AuthController extends Controller
                 return redirect()->route('agent.dashboard');
             }
             else{
-                return redirect()->route('');
+                return redirect()->route('home');
             }
         }
 
@@ -216,7 +216,7 @@ class AuthController extends Controller
         ]);
 
         Session::flash('success',"Password was changed successfully!");
-        return redirect()->route('profile.view');
+        return redirect()->route('profile');
         }
         
     }
