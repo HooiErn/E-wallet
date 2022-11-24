@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('account_id')->default(1);
             $table->string('account_name');
-            $table->string('account_level');
+            $table->integer('account_level');
             $table->string('name');
             $table->string('username');
             $table->string('email',191)->unique();
@@ -32,7 +32,6 @@ class CreateUsersTable extends Migration
             $table->string('status')->nullable();
             $table->integer('credit_limit')->unsigned();
             $table->date('join_date');
-            $table->integer('type')->unsigned();
             $table->string('created_by');
             $table->string('deleted_by')->nullable();
             $table->rememberToken();
