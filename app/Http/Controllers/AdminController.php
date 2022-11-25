@@ -203,6 +203,76 @@ public function enterPassword(){
         }
         
     }
+    
+    public function postRegistration(Request $request){
+        
+        $request->validate([
+            'name' => 'required',
+            'account_name' => 'required',
+            'account_id' => 'required',
+            'account_level' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+            'email' => 'required',
+            'join_date' => 'required',
+            'base_currency' => 'nullable',
+            'credit_limit' => 'required',
+            'credit_available' => 'required',
+            'created_by' => 'required',
+        ]);
+        // generate account id automatically
+        $request['account_id'] = $this->generateAccID(12);
+$data = $request->only('name','account_name','account_id','account_level','username','password','email','join_date','base_currency'
+        ,'credit_limit','credit_available','created_by');
+        $check = $this->create($data);
+
+        //check if user is created
+        if($check)
+        {
+            // assign user to get its id
+            $user = DB::table('users')->select('users.id')->where('users.account_id',$request->account_id)->first()->id;
+
+            // check for each permission is checked on checkbox
+            if($request->can_deposit)
+            {
+                $data = array('user_id' => $user,'permission_id' => 1);
+                DB::table('user_permissions')->insert($data);
+            }
+            if($request->can_withdraw)
+            {
+                $data = array('user_id' => $user,'permission_id' => 2);
+                DB::table('user_permissions')->insert($data);
+            }
+            if($request->can_transfer)
+            {
+                $data = array('user_id' => $user,'permission_id' => 3);
+                DB::table('user_permissions')->insert($data);
+            }
+        }
+
+        // insert create wallet code or method here
+
+        if($request->account_level == 1)
+        {
+            return redirect()->route('view.admin')->withSuccess('You have successfully created a sub-admin!');
+        }
+        else if($request->account_level == 2)
+        {
+            return redirect()->route('view.branch')->withSuccess('You have successfully created a new branch!');
+        }
+        else if($request->account_level == 3)
+        {
+            return redirect()->route('view.agents')->withSuccess('You have successfully created a new agent!');
+        }
+        else if($request->account_level == 4)
+        {
+            return redirect()->route('view.member')->withSuccess('You have successfully created a new member!');
+        }
+        else
+        {
+            return back()->withError('Incorrect input. Please try again.');
+        }
+    }
 
 //postRegisterBranches
 // public function postRegisterBranches(Request $r)

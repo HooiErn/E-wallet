@@ -1,95 +1,187 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-    <meta charset="utf-8" />
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>E-wallet</title>
+        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!-- Scripts -->
+       <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+           <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <!-- Styles -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type='text/css'>
-</head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+       <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/refresh.css') }}" rel="stylesheet">
+  
+        <style type="text/css">
+           @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+  
+            body{
+                margin: 0;
+                font-size: .9rem;
+                font-weight: 400;
+                line-height: 1.6;
+                color: #212529;
+                text-align: left;
+                background-color: #f5f8fa;
+            }
+            .navbar-laravel
+            {
+                box-shadow: 0 2px 4px rgba(0,0,0,.04);
+            }
+            .navbar-brand , .nav-link, .my-form, .login-form,.topnav-link
+            {
+                font-family: Raleway, sans-serif;
+            }
+            .sidenav{
+            height: 100%; 
+            width: 0; 
+            position: fixed; 
+            z-index: 1; /* Stay on top */
+            top: 0; 
+            left: 0;
+            background-color: #000;
+            box-shadow: 0 2px 10px rgba(0,0,0,.04);
+            overflow-x: hidden; 
+            padding-top: 60px;
+            transition: 0.5s; 
+            }
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+            .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            margin-top:0.5rem;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+            }
 
-                    </ul>
+            .sidenav li:hover {
+            background-color:grey;
+            transition: 0.5s; 
+            color:white;
+            }
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+            .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+            }
+            .my-form
+            {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+            .my-form .row
+            {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .login-form
+            {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+            .login-form .row
+            {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .img-circle{
+                border-radius: 50%;
+            }
+            .topnav-link a{
+                font-size:16px;
+                text-decoration: none;
+                margin:5px;
+            }
+            @media only screen and (max-width: 991px){
+                .navbar-brand{
+                    margin-right:100px !important;
+                }
+                .topnav-link{
+                    margin-top:3px !important;
+                }
+                .nav-item{
+                    margin-left:10px !important;
+                }
+            }
+            @media(max-width: 799px){
+                .navbar-brand{
+                    margin-right:120px !important;
+                }
+                .topnav-link{
+                    margin-top:3px !important;
+                }
+                .nav-item{
+                    margin-left:10px !important;
+                }
+            }
+            @media only screen and (max-width: 360px){
+                .navbar-brand{
+                    margin-right:160px !important;
+                }
+                .topnav-link{
+                    margin-top:3px !important;
+                }
+                .nav-item{
+                    margin-left:10px !important;
+                }
+            }
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+        </style>
+    </head>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+    <body>
+      <!--TopNav first--> 
+    <nav class="navbar navbar-expand-lg navbar-laravel" style=" background-image:linear-gradient(to right,#ff914d,#ff9b4f);">
+        <div class="container">
+                @if(Auth::user()->isAdmin())
+                    <a class="navbar-brand" href="{{ route('admin.dashboard')}}" style="color:white;display:inline;">E-wallet</a>    
+                @elseif(Auth::user()->isBranch())
+                <a class="navbar-brand" href="{{ route('branch.dashboard')}}" style="color:white;display:inline;">E-wallet</a>
+                @elseif(Auth::user()->isAgent())
+                <a class="navbar-brand" href="{{ route('agent.dashboard')}}" style="color:white;display:inline;">E-wallet</a>
+                @elseif(Auth::user()->isMember())
+                <a class="navbar-brand" href="{{ route('home')}}" style="color:white;display:inline;">E-wallet</a>
+                @else
+                @endif
+                <!--Login & Logout-->
+            <div style="float:right;margin-right:25px;"> 
+                @guest
+                   <a class="nav-link" href="{{ route('login') }}" style="color:white;"><i class="fas fa-sign-in-alt"></i></a>
+                @else
+                <a class="nav-link" href="{{ route('logout') }}" style="color:white;"><i class="fa fa-solid fa fa-right-to-bracket"></i></a>
+                   
+                @endguest
                 </div>
+        </nav> 
+    <!-- TopNav second 
+        <nav class="navbar navbar-expand-lg navbar-laravel" style="max-width : 10000px; background-image:linear-gradient(to right,#ff914d,#ff9b4f);overflow-x:scroll;">
+                <div class="topnav-link">
+                <a  href="{{ route('dashboard')}}"
+                 style="color: white;">Admin Dashboard</a>
+                 <a  href="#"
+                 style="color: white;">Food Menu</a>
+                 <a  href="#"
+                 style="color: white;">Order History</a>
+       </div>   -->           
+
             </div>
         </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-</body>
+        </div>
+        </nav>
+        @yield('content')
+   
+    </body>
 </html>

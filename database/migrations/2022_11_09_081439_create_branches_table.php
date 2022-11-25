@@ -33,6 +33,7 @@ class CreateBranchesTable extends Migration
             $table->integer('credit_limit')->unsigned();
             $table->date('join_date');
             $table->string('created_by');
+            $table->string('deleted_by')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

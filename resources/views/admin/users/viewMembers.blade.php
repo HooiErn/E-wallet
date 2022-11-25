@@ -75,21 +75,21 @@
                     <div class="form-group">
                         <label for="name">Name:</label>
                         <input type="text" class="form-control" placeholder="Enter Full Name"
-                         id="name" name="name"  value="" style="width:160px;" value="{{$user->name}}" required autofocus>
+                         id="name" name="name" style="width:160px;" value="{{$user -> name}}" required autofocus>
  
                     </div>
 
                     <div class="form-group">
                         <label for="username">Login ID:</label>
                         <input type="text" class="form-control" placeholder="Enter Username"
-                         id="username" name="username" style="width:160px;"  value=""  required autofocus>
+                         id="username" name="username" style="width:160px;"  value="{{$user -> username}}"  required autofocus>
  
                     </div>
 
                     <div class="form-group"  style="margin-top:20px;">
                         <label for="email">Email:</label>
                         <input type="email" class="form-control" placeholder="Email" 
-                        id="email" name="email" style="width:160px;"  value="" required autofocus>
+                        id="email" name="email" style="width:160px;"  value="{{$user -> email}}" required autofocus>
  
                     </div>
                     
@@ -97,28 +97,28 @@
                     <div class="form-group"   style="margin-top:20px;">
                         <label for="ic">IC Number:</label>
                         <input type="text" class="form-control" placeholder="eg.991114-07-7777" id="ic" name="ic"
-                        pattern="[0-9]{6}-[0-9]{2}-[0-9]{4}" style="width:160px;"  value="" required autofocus>
+                        pattern="[0-9]{6}-[0-9]{2}-[0-9]{4}" style="width:160px;"  value="{{$user -> ic}}" required autofocus>
 
                     </div> 
 
                     <div class="form-group">
                         <label for="accountID">Account ID:</label>
                         <input type="text" class="form-control" placeholder="Enter accountID"
-                         id="accountID" name="accountID" style="width:160px;"  value=""  required autofocus>
+                         id="accountID" name="accountID" style="width:160px;"  value="{{$user -> account_id}}"  required readonly>
  
                     </div>
 
                     <div class="form-group">
                         <label for="remark">Remark:</label>
                         <input type="text" class="form-control" placeholder="Enter remark"
-                         id="remark" name="remark" style="width:160px;"  value=""  required autofocus>
+                         id="remark" name="remark" style="width:160px;"  value="{{$user -> remark}}"  required autofocus>
  
                     </div>
 
                     <div class="form-group">
                         <label for="address">Address:</label>
                         <input type="text" class="form-control" placeholder="Enter address"
-                         id="address" name="address" style="width:160px;"  value=""  required autofocus>
+                         id="address" name="address" style="width:160px;"  value="{{$user -> address}}"  required autofocus>
                     </div>
 
                   </div>
@@ -127,14 +127,16 @@
                 <div class="column" style=" float: left;width: 20%;margin-left:120px; padding-top:1px;"  required autofocus>
                 <div class="form-group">
                 <label for="currency">Currency:</label>
-                        <input type="text" class="form-control"  placeholder="Enter currency"
-                        id="currency" name="currency"  style="width:160px;" value="" required autofocus>
+                <label for="base_currency">Base Currency:</label><br>
+                        <select id="base_currency" name="base_currency" style="width:100%;height:28px;border:white 1px solid;;box-shadow:#d0d6dc 0.5px 0.5px 0.5px 2px;font-size:15px;">
+                            <option value="MYR">MYR</option>
+                        </select>
 
                     </div>
                
                 <div class="form-group">
                 <label for="status">Status:</label>
-                        <input type="text" class="form-control" placeholder="Enter status" value="" id="status" name="status" style="width:160px;" required autofocus>
+                        <input type="text" class="form-control" placeholder="Enter status" value="{{$user -> status}}" id="status" name="status" style="width:160px;" required autofocus>
                        <!-- <p style="margin:1px;font-size:9px;">*No Score, Poor, Low, Fair, Good, Very Good, &nbspExcellent</p>-->
                     </div>
       
@@ -143,7 +145,7 @@
                      <label for="contactNumber">Contact Number:</label>
                         <input type="tel" class="form-control" placeholder="Contact Number" 
                         id="handphone_number" name="handphone_number" 
-                        pattern="[0-9]{3}-[0-9]{7}|[0-9]{3}-[0-9]{8}" style="width:160px;"  value="" required autofocus>
+                        pattern="[0-9]{3}-[0-9]{7}|[0-9]{3}-[0-9]{8}" style="width:160px;"  value="{{$user ->handphone_number }}" required autofocus>
                         <p style="margin:1px;font-size:9px;">*Format: 123-4567890</p>
 
                     </div> 
@@ -153,25 +155,24 @@
                         <label for="password">Password:</label>
                         <input type="password" class="form-control"
                          placeholder="Password" id="password" name="password" 
-                         value="" style="width:160px;" required autofocus>
+                         value="{{$user -> password}}" style="width:160px;" required autofocus>
 
                     </div>
 
                     <div class="form-group">
                         <label for="Account Level">Account Level:</label>
-                        <input type="number" id="AccountLevel" class="form-control" name="AccountLevel"  value="" min="1" max="5" style="width:160px;" required >
-                         <p style="margin:1px;font-size:9px;">*1= Admin *2= Agent...</p>
+                        <input type="number" id="account_level" class="form-control" name="account_level"  value="{{$user -> account_level}}" min="1" max="5" style="width:160px;" required readonly >
                     </div>
                   
                     <div class="form-group">
                         <label for="creditAvailable">Credit Available:</label>
-                        <input type="number" id="creditAvailable" class="form-control" name="creditAvailable"  value="" min="1" max="2000" style="width:160px;" required >
+                        <input type="number" id="credit_available" class="form-control" name="credit_available"  value="{{$user -> credit_available}}" min="1" max="2000" style="width:160px;" required readonly>
 
                     </div>
 
                     <div class="form-group">
                         <label for="creditLimit">Credit Limit:</label>
-                        <input type="number" id="creditLimit" class="form-control" name="creditLimit"  value="" max="2000" style="width:160px;" required >
+                        <input type="number" id="credit_limit" class="form-control" name="credit_limit"  value="{{$user -> credit_limit}}" max="2000" style="width:160px;" required>
 
                     </div>
 

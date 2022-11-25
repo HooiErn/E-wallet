@@ -56,7 +56,6 @@ Route::get('enterPassword',[AdminController::class, 'enterPassword'])->name('ent
 Route::get('pay/{id}',[HomeController::class, 'pay'])->name('view.pay');
 
 //Testing
-Route::get('testing',[AdminController::class, 'Testing'])->name('test');
 Route::get('test',[HomeController::class, 'test'])->name('view.test');
 
 // -----Manager-----
@@ -83,7 +82,6 @@ Route::get('change-password', [AuthController::class, 'editPassword'])->name('pa
 Route::post('update-password',[AuthController::class, 'updatePassword'])->name('password.update');
 
 Route::get('profile', [AuthController::class, 'profile'])->name('profile');  
-Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 Route::get('admin/dashboard',[AdminController::class, 'adminDashboard'])->name('admin.dashboard');
 Route::get('branch/dashboard',[AuthController::class, 'branchDashboard'])->name('branch.dashboard');
 Route::get('agent/dashboard',[AuthController::class, 'agentDashboard'])->name('agent.dashboard');

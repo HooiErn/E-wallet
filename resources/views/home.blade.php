@@ -38,7 +38,7 @@
             <div class="col-4">
               <div class="card catagory-card">
                 <div class="card-body">
-                  <a href="#">
+                  <a href="{{route('view.pay')}}">
                     <div class="icon">
                     <img src="https://cdn-icons-png.flaticon.com/512/714/714390.png" style="width:50px;height:50px;">
                   </div>
@@ -100,12 +100,12 @@
             <div class="col-4">
               <div class="card catagory-card">
                 <div class="card-body">
-                  <a href="#">
+                  <a href="{{route('view.test')}}">
                     <div class="icon">
                     <img src="https://as2.ftcdn.net/v2/jpg/05/38/38/17/1000_F_538381771_krbbFtOQMv4ZdsqWWipI6Q77D6gLGZp6.jpg" style="width:50px;height:50px;">
                     </div>
                   </a>
-                  <h6>Coming Soon</h6>
+                  <h6>Test</h6>
                 </div>
               </div>
             </div>
@@ -124,7 +124,7 @@
             <div class="col-4">
               <div class="card catagory-card">
                 <div class="card-body">
-                  <a href="{{ url('/menu') }}">
+                  <a href="{{ url('#') }}">
                     <div class="icon">
                     <img src="https://cdn-icons-png.flaticon.com/512/948/948036.png" style="width:50px;height:50px;">
                     </div>

@@ -28,6 +28,7 @@ class Agent extends Model
         'credit_limit',
         'join_date',
         'created_by',
+        'deleted_by',
 
     ];
 }
