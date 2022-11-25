@@ -45,7 +45,7 @@ Route::get('MemberRegistration',[AdminController::class, 'MemberRegistration'])-
 Route::get('BranchRegistration',[AdminController::class, 'BranchRegistration'])->name('branch.register');
 Route::get('AgentsRegistration',[AdminController::class, 'AgentsRegistration'])->name('agent.register');
 Route::get('AdminsRegistration',[AdminController::class, 'AdminRegistration'])->name('admin.register');
-Route::resource('/update' ,[AdminController::class,'update'])->name('user.update');
+Route::post('update' ,[AdminController::class,'update'])->name('user.update');
 Route::get('viewMembers',[AdminController::class, 'viewMember'])->name('view.member');
 Route::get('viewBranch',[AdminController::class, 'viewBranch'])->name('view.branch');
 Route::get('viewAgents',[AdminController::class, 'viewAgents'])->name('view.agents');

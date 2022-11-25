@@ -193,12 +193,12 @@ public function enterPassword(){
         $users->save();
 
         Session::flash('success',"User was updated successfully!");
-        if($users->type == 4){
+        if($users->account_level == 4){
             return redirect()->route('view.member');
         }
-        else if($users->type == 3){
+        else if($users->account_level == 3){
             return redirect()->route('view.agent');
-        }else if($users->type == 2){
+        }else if($users->account_level == 2){
             return redirect()->route('view.branch');
         }
         

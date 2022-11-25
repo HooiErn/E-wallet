@@ -153,7 +153,6 @@ $today = $year . '-' . $month . '-' . $day;
                                       <span class="text-danger">{{ $errors->first('created_by') }}</span>
                                   @endif
                     </div> -->
-
                     <input type="hidden" class="form-control" id="created_by" name="created_by"  value="{{auth()->user()->name}}" required autofocus>
 
                     <div class="form-group" style="text-align:center;"><br>

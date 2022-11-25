@@ -11,7 +11,7 @@
 </style>
 <div class="container">
     <div class="list">
-        <table class="table table-bordered">
+        <table class="table table-bordered" id="dataTable">
             <thead>
                 <th>Name</th>
                 <th>Account_id</th>
@@ -27,28 +27,29 @@
                 <th>Action</th>
                             
             </thead>
-            <tbody>
+            <tbody>  
+            @foreach($users as $user)
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                 <td style='white-space: nowrap'>
+                    <td>{{$user -> name}}</td>
+                    <td>{{$user -> account_id}}</td>
+                    <td>{{$user -> username}}</td>
+                    <td>{{$user -> email}}</td>
+                    <td>{{$user -> handphone_number}}</td>
+                    <td>{{$user -> ic}}</td>
+                    <td>{{$user -> base_currency}}</td>
+                    <td>{{$user -> credit_available}}</td>
+                    <td>{{$user -> address}}</td>
+                    <td>{{$user -> join_date}}</td>
+                    <td>{{$user -> created_by}}</td>
+                 <td style='white-space: nowrap;width:100px;'>
                    <!-- Button trigger modal -->
                 <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#exampleModal" style="margin-right:5px;font-size:11px;float:left;">
                 Edit
                 </button>
 
-                <!-- Modal -->
                 <div class="modal fade"  class="btn" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
+
                     <div class="modal-content"  style="width:650px;">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Update Member</h5>
@@ -56,24 +57,25 @@
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+          <form method="POST" action="{{ route('user.update',['id'=>$user->id])  }}">
+                   {{ csrf_field() }} 
                     <div class="modal-body">
                         
                     <main class="register-form">
-  <div class="cotainer" style="overflow-x:hidden">
-  <div class="row justify-content-right ml-5">
-          <div class="col-md-10">
-            <br>
-            <div class="column" style=" float: left; width: 20%;">
-             
-            
-              
+                    <div class="container" style="overflow-x:hidden">
+                    <div class="row justify-content-right ml-5">
+                            <div class="col-md-10">
+                                <br>
+                
+                   
+                  <div class="column" style=" float: left; width: 20%;">
                 <!-- hidden -->
-                <input type="hidden" id="created_by" class="form-control" name="created_by"  value="" required >
+                <input type="hidden" id="created_by" class="form-control" name="created_by"  value="{{$user -> created_by}}" required >
 
                     <div class="form-group">
                         <label for="name">Name:</label>
                         <input type="text" class="form-control" placeholder="Enter Full Name"
-                         id="name" name="name"  value="" style="width:160px;" required autofocus>
+                         id="name" name="name"  value="" style="width:160px;" value="{{$user->name}}" required autofocus>
  
                     </div>
 
@@ -176,6 +178,7 @@
                     <div class="form-group" style="text-align:right;"><br>
                         <button  type="submit" class="btn btn-primary">Submit</button>
                     </div>
+                 
                 </form>
                 
         </div>
@@ -188,14 +191,48 @@
                     </div>
                 </div>
                 </div>
+                    <br><br>
                     <a href="#"  style="font-size:11px;" class="btn btn-danger btn-xs"  
                     onClick="return confirm('Are you sure to delete?')">Delete</a>
-                </td>
+                </td> 
+              
                 </tr>
+                 @endforeach
             </tbody>
         </table>
 
     </div>
 
 </div>
+{{-- pop model end here  --}}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- <script type="text/javascript">
+
+    $(document).ready(function(){
+        var table =$('#dataTable').DataTable();
+
+        //Start Edit Record
+        table.on('click','.edit',function(){
+        $tr = $(this).closest('tr');
+        if($($tr).hasClass('child')){
+        $tr= $tr.prev('.parent');
+        }
+
+        var data =table.row($tr).data();
+        console.log(data);
+
+        $('#name').val(data[1]);
+        $('#username').val(data[2]);
+        $('#email').val(data[3]);
+
+        $('#editForm').attr('action','/update'+data[0]);
+        $('editModal').modal('show');
+
+        });
+    });
+    
+     
+</script> -->
 @endsection

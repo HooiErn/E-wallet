@@ -146,9 +146,17 @@
       <!--TopNav first--> 
     <nav class="navbar navbar-expand-lg navbar-laravel" style=" background-image:linear-gradient(to right,#ff914d,#ff9b4f);">
         <div class="container">
-       
-                <a class="navbar-brand" href="{{ route('dashboard')}}" style="color:white;display:inline;">E-wallet</a>
-            <!--Login & Logout-->
+                @if(Auth::user()->isAdmin())
+                    <a class="navbar-brand" href="{{ route('admin.dashboard')}}" style="color:white;display:inline;">E-wallet</a>    
+                @elseif(Auth::user()->isBranch())
+                <a class="navbar-brand" href="{{ route('branch.dashboard')}}" style="color:white;display:inline;">E-wallet</a>
+                @elseif(Auth::user()->isAgent())
+                <a class="navbar-brand" href="{{ route('agent.dashboard')}}" style="color:white;display:inline;">E-wallet</a>
+                @elseif(Auth::user()->isMember())
+                <a class="navbar-brand" href="{{ route('home')}}" style="color:white;display:inline;">E-wallet</a>
+                @else
+                @endif
+                <!--Login & Logout-->
             <div style="float:right;margin-right:25px;"> 
                 @guest
                    <a class="nav-link" href="{{ route('login') }}" style="color:white;"><i class="fas fa-sign-in-alt"></i></a>
@@ -167,27 +175,13 @@
                  style="color: white;">Food Menu</a>
                  <a  href="#"
                  style="color: white;">Order History</a>
-       </div>   -->
-    
-                    
- 
-
-                     
+       </div>   -->           
 
             </div>
         </nav>
         </div>
         </nav>
         @yield('content')
-        <script>
-            function openNav() {
-            document.getElementById("mySideNav").style.width = "250px";
-            }
-
-            function closeNav() {
-            document.getElementById("mySideNav").style.width = "0";
-            }
-            </script>
    
     </body>
 </html>

@@ -9,14 +9,15 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-           <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <!-- Styles -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
-       <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
         <link href="{{ asset('css/refresh.css') }}" rel="stylesheet">
         <!-- @if(!Session::has('adminData'))
@@ -151,7 +152,16 @@
     <nav class="navbar navbar-expand-lg navbar-laravel" style=" background-image:linear-gradient(to right,#ff914d,#ff9b4f);">
         <div class="container">
        
-                <a class="navbar-brand" href="{{ route('dashboard')}}" style="color:white;display:inline;">E-wallet</a>
+        @if(Auth::user()->isAdmin())
+                    <a class="navbar-brand" href="{{ route('admin.dashboard')}}" style="color:white;display:inline;">E-wallet</a>    
+                @elseif(Auth::user()->isBranch())
+                <a class="navbar-brand" href="{{ route('branch.dashboard')}}" style="color:white;display:inline;">E-wallet</a>
+                @elseif(Auth::user()->isAgent())
+                <a class="navbar-brand" href="{{ route('agent.dashboard')}}" style="color:white;display:inline;">E-wallet</a>
+                @elseif(Auth::user()->isMember())
+                <a class="navbar-brand" href="{{ route('home')}}" style="color:white;display:inline;">E-wallet</a>
+                @else
+                @endif
             <!--Login & Logout-->
             <div style="float:right;margin-right:25px;"> 
                 @guest
@@ -183,15 +193,7 @@
         </div>
         </nav>
         @yield('content')
-        <script>
-            function openNav() {
-            document.getElementById("mySideNav").style.width = "250px";
-            }
 
-            function closeNav() {
-            document.getElementById("mySideNav").style.width = "0";
-            }
-            </script>
    
     </body>
 </html>
