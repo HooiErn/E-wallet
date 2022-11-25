@@ -1,4 +1,4 @@
-@extends('auth.layout')
+@extends('layout')
 @section('content')
 
 <!DOCTYPE html>
@@ -143,7 +143,7 @@ function myFunction5() {
         <div class="Transfer">
 
             <div class="top-icon">
-               <a href="{{route('transfer')}}"><i class="fas fa-arrow-left" style="float:left;margin-top:5px;color:white;"></i> </a> 
+               <a href="/transferr"><i class="fas fa-arrow-left" style="float:left;margin-top:5px;color:white;"></i> </a> 
             <p style="margin-top:5px;font-weight:bold;font-size:18px;">Transfer Money</p>
         </div>
    
@@ -151,17 +151,18 @@ function myFunction5() {
  </nav>
 <br>
  <h5>Transfer To</h5>
+ @foreach($users as $user)
  <div class="top-profile" style="height:80px;">
-            <h2 style="color:white;">Danny</h2>
-            <span style="color:white;">+60 16-543 3202</span>
+            <h2 style="color:white;">{{$user -> name}}</h2>
+            <span style="color:white;">{{$user -> phone_number}}</span>
         </div>
+  @endforeach  
         
 <div class="content" >
-
 <form action="/enterPassword">
-&nbsp; &nbsp;<input type="number" id="amount" name="amount" class="amount" placeholder="Amount" style="width:345px; height:40px;" min="1" max="2000" required>
+&nbsp; &nbsp;<input type="number" id="amount" name="amount" class="amount" placeholder="Amount" style="width:345px; height:40px;" min="1" max=" {{$wallet -> balance}}" required>
 
-            <center><h6 style="color:red;"> You can transfer up to RM 2000</h6></center>
+            <center><h6 style="color:red;"> You can transfer up to RM  {{$wallet -> balance}}</h6></center>
         
             &nbsp; &nbsp; &nbsp; &nbsp; <button class="my-button1" onclick="myFunction1()">RM20</button>
              <button class="my-button2" onclick="myFunction2()">RM50</button>

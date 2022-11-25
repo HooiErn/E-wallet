@@ -130,32 +130,6 @@ public function viewAgents(){
     return view('admin.users.viewAgents');
 }
 
-//EnterPassword
-public function enterPassword(){
-    return view('pages.enterPassword');
-    }
-    
-      //Show Wallet
-      public function showWallet(){
-        $users = User::all();
-        foreach($users as $user){
-            if($user -> hasWallet('my-wallet')){
-                $wallet = $user -> getWallet('my-wallet');
-            }
-            else{
-                $wallet = $user->createWallet([
-                    'name' => 'New Wallet',
-                    'slug' => 'my-wallet',
-                ]);
-            } 
-        }
-
-        $wallets = DB::table('wallets')
-        ->leftjoin('users','wallets.holder_id','=','users.id')
-        ->select('wallets.*','users.loginID as uName')
-        ->get();
-        return view('admin/wallet', compact('users','wallets'));
-    }
 
     //Update
     public function update(Request $r)
@@ -203,7 +177,7 @@ public function enterPassword(){
         }
         
     }
-    
+
     public function postRegistration(Request $request){
         
         $request->validate([

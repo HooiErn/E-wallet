@@ -49,8 +49,11 @@ Route::post('update' ,[AdminController::class,'update'])->name('user.update');
 Route::get('viewMembers',[AdminController::class, 'viewMember'])->name('view.member');
 Route::get('viewBranch',[AdminController::class, 'viewBranch'])->name('view.branch');
 Route::get('viewAgents',[AdminController::class, 'viewAgents'])->name('view.agents');
-Route::get('TransferMoney',[AdminController::class, 'transferMoney'])->name('transfer.money');
-Route::get('enterPassword',[AdminController::class, 'enterPassword'])->name('enterPassword');
+
+//Transfer
+Route::get('TransferMoney',[HomeController::class, 'TransferMoney'])->name('view.TransferMoney');
+Route::get('enterPassword',[HomeController::class, 'enterPassword'])->name('view.enterPassword');
+Route::post('/Transfer',[HomeController::class, 'searchUser'] ) ->name('search.user');
 
 //Scan to pay
 Route::get('pay/{id}',[HomeController::class, 'pay'])->name('view.pay');

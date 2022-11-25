@@ -151,16 +151,17 @@
       <!--TopNav first--> 
     <nav class="navbar navbar-expand-lg navbar-laravel" style=" background-image:linear-gradient(to right,#ff914d,#ff9b4f);">
         <div class="container">
-       
-        @if(Auth::user()->isAdmin())
+        
+        @if(Auth::check() && Auth::user()->isAdmin())
                     <a class="navbar-brand" href="{{ route('admin.dashboard')}}" style="color:white;display:inline;">E-wallet</a>    
-                @elseif(Auth::user()->isBranch())
+                @elseif(Auth::check()  && Auth::user()->isBranch())
                 <a class="navbar-brand" href="{{ route('branch.dashboard')}}" style="color:white;display:inline;">E-wallet</a>
-                @elseif(Auth::user()->isAgent())
+                @elseif(Auth::check()  && Auth::user()->isAgent())
                 <a class="navbar-brand" href="{{ route('agent.dashboard')}}" style="color:white;display:inline;">E-wallet</a>
-                @elseif(Auth::user()->isMember())
+                @elseif(Auth::check()  && Auth::user()->isMember())
                 <a class="navbar-brand" href="{{ route('home')}}" style="color:white;display:inline;">E-wallet</a>
                 @else
+                <a class="navbar-brand" href="#" style="color:white;display:inline;">E-wallet</a>
                 @endif
             <!--Login & Logout-->
             <div style="float:right;margin-right:25px;"> 
@@ -175,7 +176,7 @@
     <!-- TopNav second 
         <nav class="navbar navbar-expand-lg navbar-laravel" style="max-width : 10000px; background-image:linear-gradient(to right,#ff914d,#ff9b4f);overflow-x:scroll;">
                 <div class="topnav-link">
-                <a  href="{{ route('dashboard')}}"
+                <a  href=""
                  style="color: white;">Admin Dashboard</a>
                  <a  href="#"
                  style="color: white;">Food Menu</a>

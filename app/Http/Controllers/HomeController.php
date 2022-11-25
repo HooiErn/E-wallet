@@ -77,37 +77,131 @@ class HomeController extends Controller
         return view('pages.Transfer', compact('users'));
     }
 
-    public function transfer(Request $request){
-        $first = User::where('id',Auth::id())->first();
-        $last = User::where('id', $request -> userID)->first();
-        $first->getKey() !== $last->getKey();
-
-        if($first-> hasWallet('default')){
-            $walletFirst = $first->wallet;
+    public function transfer(){
+        // $foods= Food::all();
+        $users = DB::table('users')->select('users.*')->get();
+       
+        //Log in user wallet
+        $users = User::where('id',Auth::id())->first();
+ 
+        if($users-> hasWallet('default')){
+            $wallet = $users->wallet;
         }
-        elseif($first-> hasWallet('my-wallet')){
-            $walletFirst = $first->getWallet('my-wallet');
-        }
-        else{
-            Session::flash('msg','You dint have any wallet please create one');
-            return redirect('home');
-        }
-
-        if($last-> hasWallet('default')){
-            $walletLast = $last->wallet;
-        }
-        elseif($last-> hasWallet('my-wallet')){
-            $walletLast = $last->getWallet('my-wallet');
+        elseif($users-> hasWallet('my-wallet')){
+            $wallet = $users->getWallet('my-wallet');
         }
         else{
-            Session::flash('msg','You dint have any wallet please create one');
-            return redirect('home');
+            $wallet = $users->createWallet([
+                'name' => 'New Wallet',
+                'slug' => 'my-wallet',
+            ]);
+        }
+ 
+        //Log in user history
+        $walletHistory = DB::table('wallets')
+        ->leftjoin('transactions','wallets.id','=','transactions.wallet_id')
+        ->where('wallets.holder_id',Auth::user()->id)
+        ->get();
+ 
+        // $walletHistory = DB::table('wallets')
+        // ->leftjoin('transactions','wallets.id','=','transactions.wallet_id')
+        // ->leftjoin('transfers', 'wallet.id','=','transfers.from_id')
+        // ->where(function($query){
+        //      ->select('transfers.*','transfers.status as typeTransfer')
+        //})
+        // ->where('wallets.holder_id',Auth::user()->id)
+        // ->get();
+ 
+        //All users wallet
+        $users = DB::table('users')->leftjoin('wallets','users.id','=','wallets.holder_id')->select('users.*','wallets.balance as wBalance')->get();
+ 
+        return view('pages.transferr', compact('wallet','walletHistory','users'));
+     }
+
+     public function TransferMoney(){
+        //Log in user wallet
+        $user = User::where('id',Auth::id())->first();
+ 
+        if($user-> hasWallet('default')){
+            $wallet = $user->wallet;
+        }
+        elseif($user-> hasWallet('my-wallet')){
+            $wallet = $user->getWallet('my-wallet');
+        }
+        else{
+            $wallet = $user->createWallet([
+                'name' => 'New Wallet',
+                'slug' => 'my-wallet',
+            ]);
+        }
+ 
+        //Log in user history
+        $walletHistory = DB::table('wallets')
+        ->leftjoin('transactions','wallets.id','=','transactions.wallet_id')
+        ->where('wallets.holder_id',Auth::user()->id)
+        ->get();
+ 
+        // $walletHistory = DB::table('wallets')
+        // ->leftjoin('transactions','wallets.id','=','transactions.wallet_id')
+        // ->leftjoin('transfers', 'wallet.id','=','transfers.from_id')
+        // ->where(function($query){
+        //      ->select('transfers.*','transfers.status as typeTransfer')
+        //})
+        // ->where('wallets.holder_id',Auth::user()->id)
+        // ->get();
+ 
+        //All users wallet
+        $users = DB::table('users')->leftjoin('wallets','users.id','=','wallets.holder_id')->select('users.*','wallets.balance as wBalance')->get();
+ 
+        return view('pages.TransferMoney', compact('wallet','walletHistory','user'));
+     }
+ //EnterPassword
+    public function enterPassword(){
+         //Log in user wallet
+         $user = User::where('id',Auth::id())->first();
+
+         if($user-> hasWallet('default')){
+             $wallet = $user->wallet;
+         }
+         elseif($user-> hasWallet('my-wallet')){
+             $wallet = $user->getWallet('my-wallet');
+         }
+         else{
+             $wallet = $user->createWallet([
+                 'name' => 'New Wallet',
+                 'slug' => 'my-wallet',
+             ]);
+         }
+ 
+         //Log in user history
+         $walletHistory = DB::table('wallets')
+         ->leftjoin('transactions','wallets.id','=','transactions.wallet_id')
+         ->where('wallets.holder_id',Auth::user()->id)
+         ->get();
+ 
+         // $walletHistory = DB::table('wallets')
+         // ->leftjoin('transactions','wallets.id','=','transactions.wallet_id')
+         // ->leftjoin('transfers', 'wallet.id','=','transfers.from_id')
+         // ->where(function($query){
+         //      ->select('transfers.*','transfers.status as typeTransfer')
+         //})
+         // ->where('wallets.holder_id',Auth::user()->id)
+         // ->get();
+ 
+         //All users wallet
+         $users = DB::table('users')->leftjoin('wallets','users.id','=','wallets.holder_id')->select('users.*','wallets.balance as wBalance')->get();
+ 
+         return view('pages.enterPassword', compact('wallet','walletHistory','user'));
         }
 
-        $walletFirst -> transfer($walletLast, $request->amount);
-
-        return redirect('home');
-    }
+        public function searchUser(){
+            $r=request();
+            $keyword=$r->keyword;
+            $users=DB::table('users')
+            ->where('users.name','like','%'.$keyword.'%')
+            ->get();
+            return view('pages.transferr')->with('users',$users);
+        }
 
     //Transfer
     public function transactionHistory(){

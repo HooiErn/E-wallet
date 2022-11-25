@@ -1,5 +1,4 @@
-@extends('layouts.app')
-
+@extends('layout')
 @section('content')
 <script type="text/javascript">
 $(document).on('click', '.toggle-password', function() {
