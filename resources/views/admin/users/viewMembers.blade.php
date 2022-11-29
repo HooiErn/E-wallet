@@ -43,13 +43,13 @@
                     <td>{{$user -> created_by}}</td>
                  <td style='white-space: nowrap;width:100px;'>
                    <!-- Button trigger modal -->
-                <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#exampleModal" style="margin-right:5px;font-size:11px;float:left;">
+                <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#exampleModal{{ $user->id }}" style="margin-right:5px;font-size:11px;float:left;">
                 Edit
                 </button>
-
-                <div class="modal fade"  class="btn" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <form method="POST" action="{{ route('user.update',['id'=>$user->id])}}">
+                <div class="modal fade"  class="btn" id="exampleModal{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-
+ 
                     <div class="modal-content"  style="width:650px;">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Update Member</h5>
@@ -57,7 +57,7 @@
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-          <form method="POST" action="{{ route('user.update',['id'=>$user->id])  }}">
+        
                    {{ csrf_field() }} 
                     <div class="modal-body">
                         
@@ -68,9 +68,10 @@
                                 <br>
                 
                    
-                  <div class="column" style=" float: left; width: 20%;">
+         <div class="column" style=" float: left; width: 20%;">
                 <!-- hidden -->
                 <input type="hidden" id="created_by" class="form-control" name="created_by"  value="{{$user -> created_by}}" required >
+                <input type="hidden" id="created_by" class="form-control" name="deleted_by"  value="{{$user -> deleted_by}}" >
 
                     <div class="form-group">
                         <label for="name">Name:</label>
@@ -104,14 +105,14 @@
                     <div class="form-group">
                         <label for="accountID">Account ID:</label>
                         <input type="text" class="form-control" placeholder="Enter accountID"
-                         id="accountID" name="accountID" style="width:160px;"  value="{{$user -> account_id}}"  required readonly>
+                         id="account_id" name="account_id" style="width:160px;"  value="{{$user -> account_id}}"  required readonly>
  
                     </div>
 
                     <div class="form-group">
                         <label for="remark">Remark:</label>
                         <input type="text" class="form-control" placeholder="Enter remark"
-                         id="remark" name="remark" style="width:160px;"  value="{{$user -> remark}}"  required autofocus>
+                         id="remark" name="remark" style="width:160px;"  value="{{$user -> remark}}"   autofocus>
  
                     </div>
 
@@ -124,7 +125,7 @@
                   </div>
 
         <!--Column 2-->
-                <div class="column" style=" float: left;width: 20%;margin-left:120px; padding-top:1px;"  required autofocus>
+                <div class="column" style=" float: left;width: 20%;margin-left:120px; padding-top:1px;"   autofocus>
                 <div class="form-group">
                 <label for="currency">Currency:</label>
                 <label for="base_currency">Base Currency:</label><br>
@@ -136,7 +137,7 @@
                
                 <div class="form-group">
                 <label for="status">Status:</label>
-                        <input type="text" class="form-control" placeholder="Enter status" value="{{$user -> status}}" id="status" name="status" style="width:160px;" required autofocus>
+                        <input type="text" class="form-control" placeholder="Enter status" value="{{$user -> status}}" id="status" name="status" style="width:160px;"  autofocus>
                        <!-- <p style="margin:1px;font-size:9px;">*No Score, Poor, Low, Fair, Good, Very Good, &nbspExcellent</p>-->
                     </div>
       
@@ -180,11 +181,12 @@
                         <button  type="submit" class="btn btn-primary">Submit</button>
                     </div>
                  
-                </form>
+             
                 
+          </form></div>
         </div>
-        </div>
-        </div>
+        </div>   
+  
         </div>
         </main>
                  

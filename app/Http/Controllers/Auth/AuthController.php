@@ -146,7 +146,11 @@ class AuthController extends Controller
         ]);
     }
     
-
+  //Profile
+   public function profile(){
+    $users = User::all()->where('id',Auth::id());
+    return view('pages.profile')->with(["users" => $users]);
+}
 //Update
     // public function update(Request $r)
     // {

@@ -24,9 +24,9 @@
                 <a href="{{route('logout')}}" onclick="return confirm('Are you sure you want to logout?')"><i class="fa fa-solid fa fa-right-to-bracket"  style="color:white;"></i></a>
                 </div>
             </div>
-            
+            @foreach($users as $user)
             <div class="top-profile">
-            <h2>Danny</h2>
+            <h2>  {{ $user->username }}</h2>
         </div>
 <!-- Wallet -->
             <div class="card mt-3">
@@ -39,16 +39,17 @@
                     <p>Account</p>
                     <a href="#">Active</a> 
                 </div>
+                
                 <div class="column">
-                    <p>RM 0.00</p>
-                    <a href="#">Top up</a> 
+                    <p>RM {{$user -> credit_available}}</p>
+                    <a href="/deposit">Top up</a> 
                 </div>
                 <div class="column" style="border-right:none !important;">
                     <p>Payment</p>
                     <a href="#">Payment Option</a>  
                 </div>
                 </div>
-                
+                @endforeach
             </div>
     <!-- Wallet -->
     <!-- Option -->

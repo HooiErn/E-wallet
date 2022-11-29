@@ -62,7 +62,7 @@ input.attr('type') === 'password' ? input.attr('type','text') : input.attr('type
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link" href="{{ route('password.request') }}" style="text-decoration:none!important;">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif

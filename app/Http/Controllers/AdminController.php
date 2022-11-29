@@ -9,6 +9,7 @@ use App\Models\Food;
 use App\Models\Admin;
 use App\Models\Agent;
 use App\Models\Branch;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -60,10 +61,7 @@ class AdminController extends Controller
 
 
 //Function
-//Transfer(Phone search)
-public function transfer(){
-    return view('pages.Transfer');
-}
+
 //QRScan
 public function QrScan(){
     return view('pages.QrScan');
@@ -97,10 +95,6 @@ public function transferMoney(){
     return view('pages.TransferMoney');
    }
 
-   //Profile
-   public function profile(){
-    return view('pages.profile');
-}
    //Show History
    public function showHistory(){
     $users = DB::table('transactions')
@@ -150,6 +144,7 @@ public function viewAgents(){
             'credit_available' => 'required',
             'ic' => 'nullable',
             'created_by' => 'required',
+            'deleted_by' => 'nullable',
         ]);
         $users->name = $r->name;
         $users->account_id = $r->account_id;

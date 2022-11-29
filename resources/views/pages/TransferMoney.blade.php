@@ -154,7 +154,7 @@ function myFunction5() {
  @foreach($users as $user)
  <div class="top-profile" style="height:80px;">
             <h2 style="color:white;">{{$user -> name}}</h2>
-            <span style="color:white;">{{$user -> phone_number}}</span>
+            <span style="color:white;">{{$user -> handphone_number}}</span>
         </div>
   @endforeach  
         

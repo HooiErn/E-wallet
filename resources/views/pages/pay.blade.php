@@ -21,7 +21,7 @@
         <div class="profile">
             <div class="top-icon">
                 <div>
-                   <a href="/home"><i class="fas fa-arrow-left" style="color:white;"></i></a> 
+                   <a href="/"><i class="fas fa-arrow-left" style="color:white;"></i></a> 
                 </div>
                 <div>
                     <h3>Pay</h3>
