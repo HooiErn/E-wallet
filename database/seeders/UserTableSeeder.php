@@ -28,7 +28,6 @@ class UserTableSeeder extends Seeder
             'created_by'=> 'Auto',
             'join_date' => Carbon::today(),
             'credit_limit' => 10000,
-            'credit_available' => 200,
         ]);
 
      

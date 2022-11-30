@@ -70,7 +70,6 @@ class AuthController extends Controller
             'base_currency' => 'nullable',
             'handphone_number' => 'nullable',
             'credit_limit' => 'required',
-            'credit_available' => 'required',
             'ic' => 'nullable',
             'created_by' => 'required',
         ]);
@@ -140,7 +139,6 @@ class AuthController extends Controller
             'base_currency' => $data['base_currency'],
             'handphone_number' => $data['handphone_number'],
             'credit_limit' => $data['credit_limit'],
-            'credit_available' => $data['credit_available'],
             'ic' => $data['ic'],
             'created_by' => $data['created_by'],
         ]);

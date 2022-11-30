@@ -117,13 +117,7 @@ $today = $year . '-' . $month . '-' . $day;
 <!-- column 3 -->
           <div class="column" style=" float: left;width: 20%;margin-left:100px; padding-top:32px;">
 
-          <div class="form-group">
-                        <label for="credit_available">Credit Available:</label>
-                        <input type="number" class="form-control" id="credit_available" name="credit_available"  min="0.0" max="2000.0" required autofocus>
-                        @if ($errors->has('credit_available'))
-                                      <span class="text-danger">{{ $errors->first('credit_available') }}</span>
-                                  @endif
-                    </div>
+
 
                     <div class="form-group">
                         <label for="ic">IC No.:</label>

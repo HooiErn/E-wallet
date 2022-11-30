@@ -26,7 +26,6 @@ class CreateAgentsTable extends Migration
             $table->string('ic')->max(12)->nullable();
             $table->string('handphone_number')->nullable();
             $table->string('base_currency')->nullable();
-            $table->integer('credit_available')->unsigned();
             $table->string('address')->nullable();
             $table->string('remark')->nullable();
             $table->string('status')->nullable();

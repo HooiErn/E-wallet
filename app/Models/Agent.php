@@ -20,7 +20,6 @@ class Agent extends Model
         'handphone_number',
         'ic',
         'base_currency',
-        'credit_available',
         'address',
         'remark',
         'status',

@@ -39,7 +39,6 @@ class User extends Authenticatable
         'handphone_number',
         'ic',
         'base_currency',
-        'credit_available',
         'address',
         'remark',
         'status',

@@ -37,7 +37,7 @@
                     <td>{{$user -> handphone_number}}</td>
                     <td>{{$user -> ic}}</td>
                     <td>{{$user -> base_currency}}</td>
-                    <td>{{$user -> credit_available}}</td>
+                    <td></td>
                     <td>{{$user -> address}}</td>
                     <td>{{$user -> join_date}}</td>
                     <td>{{$user -> created_by}}</td>
@@ -163,12 +163,6 @@
                     <div class="form-group">
                         <label for="Account Level">Account Level:</label>
                         <input type="number" id="account_level" class="form-control" name="account_level"  value="{{$user -> account_level}}" min="1" max="5" style="width:160px;" required readonly >
-                    </div>
-                  
-                    <div class="form-group">
-                        <label for="creditAvailable">Credit Available:</label>
-                        <input type="number" id="credit_available" class="form-control" name="credit_available"  value="{{$user -> credit_available}}" min="1" max="2000" style="width:160px;" required readonly>
-
                     </div>
 
                     <div class="form-group">

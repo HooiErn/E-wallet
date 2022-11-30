@@ -141,7 +141,6 @@ public function viewAgents(){
             'base_currency' => 'nullable',
             'handphone_number' => 'nullable',
             'credit_limit' => 'required',
-            'credit_available' => 'required',
             'ic' => 'nullable',
             'created_by' => 'required',
             'deleted_by' => 'nullable',
@@ -158,7 +157,6 @@ public function viewAgents(){
         $users->join_date = $r->join_date;
         $users->base_currency = $r->base_currency;
         $users->credit_limit = $r->credit_limit;
-        $users->credit_available = $r->credit_available;
         $users->save();
 
         Session::flash('success',"User was updated successfully!");
@@ -186,13 +184,12 @@ public function viewAgents(){
             'join_date' => 'required',
             'base_currency' => 'nullable',
             'credit_limit' => 'required',
-            'credit_available' => 'required',
             'created_by' => 'required',
         ]);
         // generate account id automatically
         $request['account_id'] = $this->generateAccID(12);
 $data = $request->only('name','account_name','account_id','account_level','username','password','email','join_date','base_currency'
-        ,'credit_limit','credit_available','created_by');
+        ,'credit_limit','created_by');
         $check = $this->create($data);
 
         //check if user is created
@@ -258,7 +255,6 @@ $data = $request->only('name','account_name','account_id','account_level','usern
 //         'base_currency' => 'nullable',
 //         'handphone_number' => 'nullable',
 //         'credit_limit' => 'required',
-//         'credit_available' => 'required',
 //         'ic' => 'nullable',
 //         'created_by' => 'required',
 //     ]);
@@ -287,7 +283,6 @@ $data = $request->only('name','account_name','account_id','account_level','usern
 //         'base_currency' => 'nullable',
 //         'handphone_number' => 'nullable',
 //         'credit_limit' => 'required',
-//         'credit_available' => 'required',
 //         'ic' => 'nullable',
 //         'created_by' => 'required',
 //     ]);
@@ -322,7 +317,6 @@ $data = $request->only('name','account_name','account_id','account_level','usern
 //         'base_currency' => $data['base_currency'],
 //         'handphone_number' => $data['handphone_number'],
 //         'credit_limit' => $data['credit_limit'],
-//         'credit_available' => $data['credit_available'],
 //         'ic' => $data['ic'],
 //         'created_by' => $data['created_by'],
 //     ]);
@@ -342,7 +336,6 @@ $data = $request->only('name','account_name','account_id','account_level','usern
 //         'base_currency' => $data['base_currency'],
 //         'handphone_number' => $data['handphone_number'],
 //         'credit_limit' => $data['credit_limit'],
-//         'credit_available' => $data['credit_available'],
 //         'ic' => $data['ic'],
 //         'created_by' => $data['created_by'],
 //     ]);
