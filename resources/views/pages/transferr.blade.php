@@ -32,27 +32,22 @@
     </div>
 @endif
 
-<div class="content">
-<div class="col-md-10" style="max-width:99% !important;">
+
 
 <form class="search-bar" action="{{route('search.user')}}" method="POST" style="margin:auto;width:360px;">
-                 @csrf
-                
+                 @csrf   
                  <div class="input">
+                 <input type="search" placeholder="Search..." name="keyword" style="width:250px; color:black;">
                  <button type="submit"><i class="fa fa-search"></i></button>
-           
-            <input type="search" placeholder="Search..." name="keyword" style="width:320px; color:black;">
-                 </div>
-                
+                 </div>               
 </form>
- </div>        
-</div>  
+ 
 <br><br>
 
-</div>
+
 <div class="contact">
          <h5>All Contact</h5>
-         @foreach($iii as $uaa)
+         @foreach($users as $uaa)
 
          <div class="list">
                         <div class="section">

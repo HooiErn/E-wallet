@@ -108,3 +108,23 @@ border-radius: 15px;
 color: white;
 width: 300px;
 }
+
+@media only screen and (max-width: 768px) {
+  .input input[type=search], .input .input button {
+    float: none;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  button[type=submit] {
+    height:39px;
+    width:40px;
+    position: absolute;
+    border: none;
+  }
+  input[type=search]{
+    border: none
+  }
+
+}

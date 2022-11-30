@@ -79,13 +79,12 @@ class HomeController extends Controller
 
     public function transferr(){
         //Except Auth request all user
-        $iii = DB::table('users')->where('id','!=', Auth::user()->id)->get();
-        //reetertrt
-        //$users = DB::table('users')->where('id', Auth::user()->id)->get();
-        return view('pages.transferr', compact('iii'));
-        //return view('pages.transferr')->with('users',$users);;
+        //$iii = DB::table('users')->where('id','!=', Auth::user()->id)->get();
+ //return view('pages.transferr', compact('iii'));
+         //Print All(Included self)
+        $users = DB::table('users')->get();
+        return view('pages.transferr')->with('users',$users);;
      }
-
 
       public function transfer(Request $request){
         $first = User::where('id',Auth::id())->first();
@@ -198,10 +197,10 @@ class HomeController extends Controller
         public function searchUser(){
             $r=request();
             $keyword=$r->keyword;
-            $users=DB::table('users')
+            $uaa=DB::table('users')
             ->where('users.name','like','%'.$keyword.'%')
             ->get();
-            return view('pages.transferr')->with('users',$users);
+            return view('pages.transferr')->with('users',$uaa);
         }
 
     //Transfer
