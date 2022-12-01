@@ -37,7 +37,7 @@
                     <td>{{$user -> handphone_number}}</td>
                     <td>{{$user -> ic}}</td>
                     <td>{{$user -> base_currency}}</td>
-                    <td>{{$user ->}}</td>
+                    <td>{{$user -> balance}}</td>
                     <td>{{$user -> address}}</td>
                     <td>{{$user -> join_date}}</td>
                     <td>{{$user -> created_by}}</td>

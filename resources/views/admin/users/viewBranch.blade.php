@@ -28,18 +28,19 @@
                             
             </thead>
             <tbody>
+                @foreach($users as $user)
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$user -> name}}</td>
+                    <td>{{$user -> account_id}}</td>
+                    <td>{{$user -> username}}</td>
+                    <td>{{$user -> email}}</td>
+                    <td>{{$user -> handphone_number}}</td>
+                    <td>{{$user -> ic}}</td>
+                    <td>{{$user -> base_currency}}</td>
+                    <td>{{$user -> balance}}</td>
+                    <td>{{$user -> address}}</td>
+                    <td>{{$user -> join_date}}</td>
+                    <td>{{$user -> created_by}}</td>
                     <td style='white-space: nowrap'>
              <!-- Button trigger modal -->
            <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#exampleModal" style="margin-right:5px;font-size:11px;float:left;">
@@ -192,6 +193,7 @@
                     onClick="return confirm('Are you sure to delete?')">Delete</a>
                 </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
 
