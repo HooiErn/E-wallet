@@ -165,5 +165,5 @@
             </div>
 </section>
 
-@include('auth.money')
+@include('auth.money',$users)
 @endsection

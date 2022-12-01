@@ -56,7 +56,7 @@ Route::post('check-out/transfer', [HomeController::class, 'transfer']);
 Route::get('transactionHistory',[HomeController::class, 'transactionHistory'])->name('view.transactionHistory');
 Route::get('test',[HomeController::class, 'test'])->name('view.test');
 
-Route::get('money',[AuthController::class, 'money'])->name('view.money');
+
 
 //Scan to pay
 Route::get('pay',[HomeController::class, 'QrCode'])->name('view.pay');

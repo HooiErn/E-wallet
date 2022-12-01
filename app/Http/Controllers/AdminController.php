@@ -12,6 +12,7 @@ use App\Models\Branch;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
@@ -107,7 +108,11 @@ public function transferMoney(){
 }
 //Home
 public function home(){
-    return view('home');
+    $users = DB::table('users')->where('users.id',Auth::id())
+    ->leftjoin('wallets','users.id','=','wallets.holder_id')
+    ->select('users.*','wallets.balance as balance')
+    ->get();
+    return view('home',compact('users'));
 }
 
 //ViewMember

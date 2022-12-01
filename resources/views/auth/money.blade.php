@@ -151,9 +151,11 @@
       <!--TopNav first--> 
     <nav class="navbar navbar-expand-lg navbar-laravel" style=" background-image:linear-gradient(to right,#24a0ed,#24a0ed); position: fixed; bottom: 0; width: 100%;">
         <div class="container">
-     
-        &nbsp;<a class="navbar-brand" href="#" style="color:white;display:inline;"> MY Balance: </a> 
-      
+
+        @foreach($users as $user)
+        &nbsp;<a class="navbar-brand" href="#" style="color:white;display:inline;"> MY Balance: {{$user ->balance}}</a> 
+           @endforeach
+
         </nav> 
     <!--TopNav second--> 
      

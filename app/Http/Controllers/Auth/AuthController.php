@@ -152,14 +152,7 @@ class AuthController extends Controller
     ->get();
     return view('pages.profile')->with(["users" => $users]);
 }
-  //Money Blade
-  public function money(){
-    $users = DB::table('users')->where('users.id',Auth::id())
-    ->leftjoin('wallets','users.id','=','wallets.holder_id')
-    ->select('users.*','wallets.balance as balance')
-    ->get();
-    return view('home', compact('users'));
-}
+
 //Update
     // public function update(Request $r)
     // {
