@@ -16,7 +16,7 @@
         <div class="Txhistory">
 
             <div class="top-icon">
-               <a href="{{route('home')}}"><i class="fas fa-arrow-left" style="float:left;margin-top:5px;color:white;"></i> </a> 
+               <a href="/"><i class="fas fa-arrow-left" style="float:left;margin-top:5px;color:white;"></i> </a> 
             <p style="margin-top:5px;font-weight:bold;font-size:18px;">Transaction History</p>
         </div>
 </div>
@@ -34,14 +34,14 @@
                             <div class="text">
                           
                                 <div class="title">{{$history -> type}}</div>
-                               
+                              
                                 <div class="description">{{$history -> created_at}}</div>
                             </div>
                         </div>
 
                         <div class="section2">
                         @if ($history -> type == 'deposit')
-                        <span class="text-success">{{$history -> amount}}</span> 
+                        <span class="text-success">+{{$history -> amount}}</span> 
                       @else
                       <span class="text-danger">{{$history -> amount}}</span>
                       @endif

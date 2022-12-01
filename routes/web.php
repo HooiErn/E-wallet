@@ -37,8 +37,6 @@ Route::post('post-registration', [AuthController::class, 'postRegistration'])->n
 
 
 //Route for editing and updating users' information
-Route::get('profile',[AdminController::class, 'profile'])->name('profile');
-Route::get('transactionHistory',[HomeController::class, 'transactionHistory'])->name('view.transactionHistory');
 
 Route::get('QrScan',[AdminController::class, 'QrScan'])->name('QrScan');
 Route::get('MemberRegistration',[AdminController::class, 'MemberRegistration'])->name('member.register');
@@ -51,18 +49,18 @@ Route::get('viewBranch',[AdminController::class, 'viewBranch'])->name('view.bran
 Route::get('viewAgents',[AdminController::class, 'viewAgents'])->name('view.agents');
 
 //Transfer
+Route::post('/Transfer',[HomeController::class, 'searchUser'] ) ->name('search.user');
 Route::get('transferr',[HomeController::class, 'transferr'])->name('view.transfeR');
 Route::get('/transfer/{id}', [HomeController::class, 'transferForm']);
 Route::post('check-out/transfer', [HomeController::class, 'transfer']);
 Route::get('transactionHistory',[HomeController::class, 'transactionHistory'])->name('view.transactionHistory');
-Route::post('/transferr',[HomeController::class, 'searchUser'] ) ->name('search.user');
+Route::get('test',[HomeController::class, 'test'])->name('view.test');
 
+Route::get('money',[AuthController::class, 'money'])->name('view.money');
 
 //Scan to pay
-Route::get('pay',[HomeController::class, 'pay'])->name('view.pay');
+Route::get('pay',[HomeController::class, 'QrCode'])->name('view.pay');
 
-//Testing
-Route::get('test',[HomeController::class, 'test'])->name('view.test');
 
 // -----Manager-----
 //Deposit
@@ -72,16 +70,11 @@ Route::post('check-out/deposit', [HomeController::class, 'deposit']);
 //Withdraw
 Route::get('withdraw', [HomeController::class, 'withdrawForm']);
 Route::post('check-out/withdraw', [HomeController::class, 'withdraw']);
-// -----Member-----
-//Transfer
-Route::get('/transfer/{id}', [HomeController::class, 'transferForm']);
-Route::post('check-out/transfer', [HomeController::class, 'transfer']);
-Route::get('transactionHistory',[HomeController::class, 'transactionHistory'])->name('view.transactionHistory');
-Route::get('test',[HomeController::class, 'test'])->name('view.test');
 
 //Scan to pay
 Route::get('scan',[HomeController::class, 'scan'])->name('view.scan');
-
+Route::get('enterPassword',[HomeController::class, 'enterPassword'])->name('view.enterPassword');
+Route::post('checkPassword', [HomeController::class, 'checkPassword']);
 
 //Change Password
 Route::get('change-password', [AuthController::class, 'editPassword'])->name('password.change');

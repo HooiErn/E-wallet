@@ -1,9 +1,6 @@
 @extends('layout')
 @section('content')
 
-<style>
-</style>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +30,7 @@
             <br><br><br>
     
 <button type="button" data-toggle="modal" data-target="#exampleModal">
-{{QrCode::generate($user -> id)}}
+{{QrCode::generate($user -> id);}}
 </button>
 <br><br>
 <h6>MY Balance: RM{{$wallet -> balance}}</h6>

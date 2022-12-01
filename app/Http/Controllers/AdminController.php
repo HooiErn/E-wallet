@@ -112,16 +112,27 @@ public function home(){
 
 //ViewMember
 public function viewMember(){
-    $users = DB::table('users')->select('users.*')->where('account_level','4')->get();
+    $users = DB::table('users')->select('users.*')->where('account_level','4')
+    ->leftjoin('wallets','users.id','=','wallets.holder_id')
+    ->select('users.*','wallets.balance as balance')
+    ->get();
     return view('admin.users.viewMembers')->with(["users" => $users]);
 }
 //ViewBranch 
 public function viewBranch(){
-    return view('admin.users.viewBranch');
+    $users = DB::table('users')->select('users.*')->where('account_level','2')
+    ->leftjoin('wallets','users.id','=','wallets.holder_id')
+    ->select('users.*','wallets.balance as balance')
+    ->get();
+    return view('admin.users.viewBranch')->with(["users" => $users]);;
 }
 //ViewAgents 
 public function viewAgents(){
-    return view('admin.users.viewAgents');
+    $users = DB::table('users')->select('users.*')->where('account_level','3')
+    ->leftjoin('wallets','users.id','=','wallets.holder_id')
+    ->select('users.*','wallets.balance as balance')
+    ->get();
+    return view('admin.users.viewAgents')->with(["users" => $users]);;
 }
 
 

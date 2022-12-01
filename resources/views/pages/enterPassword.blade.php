@@ -1,5 +1,4 @@
-@extends('layout')
-@section('content')
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,21 +13,16 @@
     <title>Transfer</title>
 </head>
 
-
- 
-
 <body>
     <div class="container">
         <nav>
         <div class="Transfer">
 
             <div class="top-icon">
-               <a href="{{route('transfer.money')}}"><i class="fas fa-arrow-left" style="float:left;margin-top:5px;color:white;"></i> </a> 
+               <a href="/transferr"><i class="fas fa-arrow-left" style="float:left;margin-top:5px;color:white;"></i> </a> 
             <p style="margin-top:5px;font-weight:bold;font-size:18px;">Confirm Password</p>
         </div>
    
-
-        
 </div>
  </nav>
 <br>
@@ -36,15 +30,14 @@
 <div class="content" >
 <center>
 <h5>Please enter your password</h5>
-<form action="{{route('home')}}"> 
+<form action="{{ url('checkPassword')}}" method="POST"> 
+@csrf
               <input type="password" id="password" class="password" placeholder="Password" style="width:290px;" required>
               <br><br>
-               <button class="btn btn-success" type="submit">Confirm</button>
+               <button class="btn btn-success" type="submit" style="width:fit-content; position:inherit !important;">Confirm</button>
  </form>
  </center>
  </div>
+
 </body>
 </html>
-
-@include('auth.money')
-@endsection

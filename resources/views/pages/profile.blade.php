@@ -41,7 +41,7 @@
                 </div>
                 
                 <div class="column">
-                    <p>RM {{$user -> credit_available}}</p>
+                    <p>RM {{$user -> balance}}</p>
                     <a href="/deposit">Top up</a> 
                 </div>
                 <div class="column" style="border-right:none !important;">

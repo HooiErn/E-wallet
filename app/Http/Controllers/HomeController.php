@@ -86,7 +86,8 @@ class HomeController extends Controller
         return view('pages.transferr')->with('users',$users);;
      }
 
-      public function transfer(Request $request){
+     public function transfer(Request $request){
+        
         $first = User::where('id',Auth::id())->first();
         $last = User::where('id', $request -> userID)->first();
         $first->getKey() !== $last->getKey();
@@ -113,9 +114,15 @@ class HomeController extends Controller
             return redirect('/');
         }
 
-        $walletFirst -> transfer($walletLast, $request->amount);
-
-        return redirect('/');
+        if(\Hash::check($request->password, $first->password)){
+            $walletFirst -> transfer($walletLast, $request->amount);
+            Session::flash('msg','Transfered successfully!');
+            return redirect('home');
+        }
+        else{
+            Session::flash('msg','Transfered failed due to invalid password!');
+            return redirect('transferr');
+        }
     }
 
      public function TransferMoney(){
@@ -411,6 +418,11 @@ class HomeController extends Controller
 
         return redirect('/');
     }
+//QrCode
+    public function QrCode(){
+        $user = User::where('id',Auth::id())->first();
+        return view('pages.QrCode',compact('user'));
+    }
     //Pay
     public function pay($id){
       
@@ -449,5 +461,18 @@ class HomeController extends Controller
        $users = DB::table('users')->leftjoin('wallets','users.id','=','wallets.holder_id')->select('users.*','wallets.balance as wBalance')->get();
 
        return view('pages.pay', compact('wallet','walletHistory','user'));
+    }
+    //Check password (qrcode)
+    public function checkPassword(Request $request){
+        $check = User::where('password',$request -> password)->where('account_id',Auth::user()->account_id)->first();
+
+        if($check){
+            Session::flash('success',"Transfered successfully!");
+            return view('pages.pay');
+        }
+        else{
+            Session::flash('error',"Invalid Password!");
+            return view('pages.scan');
+        }
     }
 }

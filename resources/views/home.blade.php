@@ -38,7 +38,7 @@
             <div class="col-4">
               <div class="card catagory-card">
                 <div class="card-body">
-                  <a href="#">
+                  <a href="{{route('view.pay')}}">
                     <div class="icon">
                     <img src="https://cdn-icons-png.flaticon.com/512/714/714390.png" style="width:50px;height:50px;">
                   </div>

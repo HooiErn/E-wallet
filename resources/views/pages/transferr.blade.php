@@ -16,7 +16,7 @@
         <div class="Transfer">
 
             <div class="top-icon">
-               <a href="/"><i class="fas fa-arrow-left" style="float:left;margin-top:5px;color:white;"></i> </a> 
+               <a href="/home"><i class="fas fa-arrow-left" style="float:left;margin-top:5px;color:white;"></i> </a> 
             <p style="margin-top:5px;font-weight:bold;font-size:18px;">Transfer</p>
         </div>
    
