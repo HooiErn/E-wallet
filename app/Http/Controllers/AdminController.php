@@ -14,6 +14,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class AdminController extends Controller
 {
