@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Brian2694\Toastr\Facades\Toastr;
 
 // here is the code for settling login,register,logout function
 class AuthController extends Controller
@@ -79,6 +80,24 @@ class AuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
+        if($check){
+            $user = User::where('account_id', $request -> account_id)->first();
+            if($request -> has('can_deposit')){
+                $data = array('user_id' => $request -> account_id,'permission_id' => 1);
+                DB::table('user_permissions')->insert($data);
+            }
+            if($request -> has('can_withdraw')){
+                $data = array('user_id' => $request -> account_id,'permission_id' => 2);
+                DB::table('user_permissions')->insert($data);
+            }
+            if($request -> has('can_transfer')){
+                $data = array('user_id' => $request -> account_id,'permission_id' => 3);
+                DB::table('user_permissions')->insert($data);
+            }
+
+            $wallet = $user -> wallet;
+            $wallet -> balance;
+        }
         if($request->account_level == 2)
         {
             return redirect()->route('view.branch')->withSuccess('You have successfully created a new branch!');
@@ -101,7 +120,15 @@ class AuthController extends Controller
     {
         $accID = '';
         for($i = 0; $i < $limit; $i++){ $accID .= mt_rand(0, 9); }
-        return $accID;
+        $users = User::all();
+        foreach($users as $user){
+            if($accID == $user -> account_id){
+                generateAccID(12);
+            }
+            else{
+                return $accID;
+            }
+        }
     }
 
 
