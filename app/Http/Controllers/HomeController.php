@@ -12,6 +12,7 @@ use App\Models\Branch;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class HomeController extends Controller
 {
@@ -100,7 +101,7 @@ class HomeController extends Controller
         }
         else{
             Session::flash('msg','You dint have any wallet please create one');
-            return redirect('/');
+            return redirect('/home');
         }
 
         if($last-> hasWallet('default')){
@@ -111,7 +112,7 @@ class HomeController extends Controller
         }
         else{
             Session::flash('msg','You dint have any wallet please create one');
-            return redirect('/');
+            return redirect('/home');
         }
 
         if(\Hash::check($request->password, $first->password)){
@@ -367,6 +368,7 @@ class HomeController extends Controller
             $wallet = $user->createWallet([
                 'name' => 'New Wallet',
                 'slug' => 'my-wallet',
+                
             ]);
         }
 
@@ -384,84 +386,59 @@ class HomeController extends Controller
 
 
 
-    public function deposit(Request $request){
-        $user = User::where('id',Auth::id())->first();
-        if($user-> hasWallet('default')){
-            $wallet = $user->wallet;
-        }
-        elseif($user-> hasWallet('my-wallet')){
-            $wallet = $user->getWallet('my-wallet');
-        }
-        else{
-            Session::flash('msg','You dint have any wallet please create one');
-            return redirect('/');
-        }
-        $wallet -> deposit($request -> amount);
+   //Deposit
+   public function deposit(Request $request){
 
-        return redirect('/');
+    $user = User::where('id',Auth::id())->first();
+    if($wallet = $user->wallet){
+        $wallet = $user->wallet;
+        $wallet->balance;
+    }
+    elseif($user-> hasWallet('my-wallet')){
+        $wallet = $user->getWallet('my-wallet');
+    }
+    else{
+        return redirect('home');
+    }
+
+    if($request -> amount + ($wallet -> balance/100) > $user -> credit_limit){
+        $remaining = $user -> credit_limit - ($wallet -> balance/100);
+        return redirect('home');
+    }
+    else{
+        $wallet -> depositFloat($request -> amount/100);
+        return redirect('home');
     }
     
+}
     
-    public function withdraw(Request $request){
-        $user = User::where('id',Auth::id())->first();
-        if($user-> hasWallet('default')){
-            $wallet = $user->wallet;
-        }
-        elseif($user-> hasWallet('my-wallet')){
-            $wallet = $user->getWallet('my-wallet');
-        }
-        else{
-            Session::flash('msg','You dint have any wallet please create one');
-            return redirect('/');
-        }
-        $wallet -> withdraw($request -> amount);
-
-        return redirect('/');
+   //Withdraw
+   public function withdraw(Request $request){
+    $user = User::where('id',Auth::id())->first();
+    $walletBalance = DB::table('wallets')->where('holder_id',Auth::id())->first();
+    if($user-> hasWallet('default')){
+        $wallet = $user->wallet;
     }
+    elseif($user-> hasWallet('my-wallet')){
+        $wallet = $user->getWallet('my-wallet');
+    }
+    else{
+        return redirect('/home');
+    }
+
+    if($walletBalance->balance < $request->amount){
+        return redirect()->back();
+    }
+
+    $wallet -> withdrawFloat($request -> amount);
+    return redirect('/home');
+}
 //QrCode
     public function QrCode(){
         $user = User::where('id',Auth::id())->first();
         return view('pages.QrCode',compact('user'));
     }
-    //Pay
-    public function pay($id){
-      
-        //Log in user wallet
-       $user = User::where('id',Auth::id())->first();
-
-       if($user-> hasWallet('default')){
-           $wallet = $user->wallet;
-       }
-       elseif($user-> hasWallet('my-wallet')){
-           $wallet = $user->getWallet('my-wallet');
-       }
-       else{
-           $wallet = $user->createWallet([
-               'name' => 'New Wallet',
-               'slug' => 'my-wallet',
-           ]);
-       }
-
-       //Log in user history
-       $walletHistory = DB::table('wallets')
-       ->leftjoin('transactions','wallets.id','=','transactions.wallet_id')
-       ->where('wallets.holder_id',Auth::user()->id)
-       ->get();
-
-       // $walletHistory = DB::table('wallets')
-       // ->leftjoin('transactions','wallets.id','=','transactions.wallet_id')
-       // ->leftjoin('transfers', 'wallet.id','=','transfers.from_id')
-       // ->where(function($query){
-       //      ->select('transfers.*','transfers.status as typeTransfer')
-       //})
-       // ->where('wallets.holder_id',Auth::user()->id)
-       // ->get();
-
-       //All users wallet
-       $users = DB::table('users')->leftjoin('wallets','users.id','=','wallets.holder_id')->select('users.*','wallets.balance as wBalance')->get();
-
-       return view('pages.pay', compact('wallet','walletHistory','user'));
-    }
+   
     //Check password (qrcode)
     public function checkPassword(Request $request){
         $check = User::where('password',$request -> password)->where('account_id',Auth::user()->account_id)->first();
