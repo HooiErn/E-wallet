@@ -37,18 +37,8 @@ class HomeController extends Controller
         //Log in user wallet
         $users = User::where('id',Auth::id())->first();
 
-        if($users-> hasWallet('default')){
-            $wallet = $users->wallet;
-        }
-        elseif($users-> hasWallet('my-wallet')){
-            $wallet = $users->getWallet('my-wallet');
-        }
-        else{
-            $wallet = $users->createWallet([
-                'name' => 'New Wallet',
-                'slug' => 'my-wallet',
-            ]);
-        }
+        $wallet = $users -> wallet;
+        $wallet -> balance;
 
         //Log in user history
         $walletHistory = DB::table('wallets')
@@ -71,10 +61,10 @@ class HomeController extends Controller
         return view('home', compact('wallet','walletHistory','users'));
     }
 
-    public function transferForm(Request $request, $id){
+    public function transferForm($id){
         
-        $users = DB::table('users')->where('users.id',$id)->get();
-        return view('pages.Transfer', compact('users'));
+        $users = User::where('account_id','=',$id)->first();
+        return view('pages/transfer',compact('users'));
     }
 
 
@@ -90,7 +80,7 @@ class HomeController extends Controller
      public function transfer(Request $request){
         
         $first = User::where('id',Auth::id())->first();
-        $last = User::where('id', $request -> userID)->first();
+        $last = User::where('account_id', $request -> userID)->first();
         $first->getKey() !== $last->getKey();
 
         if($first-> hasWallet('default')){
@@ -116,13 +106,14 @@ class HomeController extends Controller
         }
 
         if(\Hash::check($request->password, $first->password)){
-            $walletFirst -> transfer($walletLast, $request->amount);
+            $walletFirst -> transferFloat($walletLast, $request -> amount);
             Session::flash('msg','Transfered successfully!');
             return redirect('home');
         }
         else{
-            Session::flash('msg','Transfered failed due to invalid password!');
-            return redirect('transferr');
+            $us = DB::table('users')->get();
+            Session::flash('error','Transfered failed due to invalid password!');
+            return view('pages.transferr')->with('users',$us);
         }
     }
 
@@ -135,12 +126,6 @@ class HomeController extends Controller
         }
         elseif($users-> hasWallet('my-wallet')){
             $wallet = $users->getWallet('my-wallet');
-        }
-        else{
-            $wallet = $users->createWallet([
-                'name' => 'New Wallet',
-                'slug' => 'my-wallet',
-            ]);
         }
  
         //Log in user history
@@ -174,12 +159,7 @@ class HomeController extends Controller
          elseif($users-> hasWallet('my-wallet')){
              $wallet = $users->getWallet('my-wallet');
          }
-         else{
-             $wallet = $users->createWallet([
-                 'name' => 'New Wallet',
-                 'slug' => 'my-wallet',
-             ]);
-         }
+
  
          //Log in user history
          $walletHistory = DB::table('wallets')
@@ -221,12 +201,7 @@ class HomeController extends Controller
         }
         elseif($users-> hasWallet('my-wallet')){
             $wallet = $users->getWallet('my-wallet');
-        }
-        else{
-            $wallet = $users->createWallet([
-                'name' => 'New Wallet',
-                'slug' => 'my-wallet',
-            ]);
+
         }
 
         //Log in user history
@@ -260,12 +235,7 @@ class HomeController extends Controller
         }
         elseif($users-> hasWallet('my-wallet')){
             $wallet = $users->getWallet('my-wallet');
-        }
-        else{
-            $wallet = $users->createWallet([
-                'name' => 'New Wallet',
-                'slug' => 'my-wallet',
-            ]);
+        
         }
  
         //Log in user history
@@ -274,16 +244,7 @@ class HomeController extends Controller
         ->where('wallets.holder_id',Auth::user()->id)
         ->get();
  
-        // $walletHistory = DB::table('wallets')
-        // ->leftjoin('transactions','wallets.id','=','transactions.wallet_id')
-        // ->leftjoin('transfers', 'wallet.id','=','transfers.from_id')
-        // ->where(function($query){
-        //      ->select('transfers.*','transfers.status as typeTransfer')
-        //})
-        // ->where('wallets.holder_id',Auth::user()->id)
-        // ->get();
- 
-        //All users wallet
+      
         $users = DB::table('users')->leftjoin('wallets','users.id','=','wallets.holder_id')->select('users.*','wallets.balance as wBalance')->get();
  
         return view('pages.scan', compact('wallet','walletHistory','users'));
@@ -291,19 +252,8 @@ class HomeController extends Controller
      public function test(){
         //Log in user wallet
         $users = User::where('id',Auth::id())->first();
- 
-        if($users-> hasWallet('default')){
-            $wallet = $users->wallet;
-        }
-        elseif($users-> hasWallet('my-wallet')){
-            $wallet = $users->getWallet('my-wallet');
-        }
-        else{
-            $wallet = $users->createWallet([
-                'name' => 'New Wallet',
-                'slug' => 'my-wallet',
-            ]);
-        }
+        $wallet = $users -> wallet;
+        $wallet -> balance;
  
         //Log in user history
         $walletHistory = DB::table('wallets')
@@ -327,21 +277,9 @@ class HomeController extends Controller
      }
      public function depositForm(){
         //Log in user wallet
-        $user = User::where('id',Auth::id())->first();
-
-        if($user-> hasWallet('default')){
-            $wallet = $user->wallet;
-        }
-        elseif($user-> hasWallet('my-wallet')){
-            $wallet = $user->getWallet('my-wallet');
-        }
-        else{
-            $wallet = $user->createWallet([
-                'name' => 'New Wallet',
-                'slug' => 'my-wallet',
-            ]);
-        }
-
+        $users = User::where('id',Auth::id())->first();
+        $wallet = $users -> wallet;
+        $wallet -> balance;
         //Log in user history
         $walletHistory = DB::table('wallets')
         ->leftjoin('transactions','wallets.id','=','transactions.wallet_id')
@@ -351,26 +289,15 @@ class HomeController extends Controller
         //All users wallet
         $users = DB::table('users')->leftjoin('wallets','users.id','=','wallets.holder_id')->select('users.*','wallets.balance as wBalance')->get();
 
-        return view('deposit', compact('wallet','walletHistory','user'));
+        return view('deposit', compact('wallet','walletHistory','users'));
     }
 
     public function withdrawForm(){
         //Log in user wallet
         $user = User::where('id',Auth::id())->first();
 
-        if($user-> hasWallet('default')){
-            $wallet = $user->wallet;
-        }
-        elseif($user-> hasWallet('my-wallet')){
-            $wallet = $user->getWallet('my-wallet');
-        }
-        else{
-            $wallet = $user->createWallet([
-                'name' => 'New Wallet',
-                'slug' => 'my-wallet',
-                
-            ]);
-        }
+        $wallet = $user->wallet;
+        $wallet->balance;
 
         //Log in user history
         $walletHistory = DB::table('wallets')
@@ -406,7 +333,7 @@ class HomeController extends Controller
         return redirect('home');
     }
     else{
-        $wallet -> depositFloat($request -> amount/100);
+        $wallet -> depositFloat($request -> amount);
         return redirect('home');
     }
     
@@ -416,19 +343,8 @@ class HomeController extends Controller
    public function withdraw(Request $request){
     $user = User::where('id',Auth::id())->first();
     $walletBalance = DB::table('wallets')->where('holder_id',Auth::id())->first();
-    if($user-> hasWallet('default')){
-        $wallet = $user->wallet;
-    }
-    elseif($user-> hasWallet('my-wallet')){
-        $wallet = $user->getWallet('my-wallet');
-    }
-    else{
-        return redirect('/home');
-    }
-
-    if($walletBalance->balance < $request->amount){
-        return redirect()->back();
-    }
+    $wallet = $user -> wallet;
+    $wallet -> balance;
 
     $wallet -> withdrawFloat($request -> amount);
     return redirect('/home');
