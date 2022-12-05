@@ -14,8 +14,14 @@
         text-align:center;
     }
 </style>
-<br><br>
+<br>
 
+@if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}  
+                    <span class="crose" data-dismiss="alert">&times;</span>
+                </div>  
+            @endif   
 
 <section class="product-catagories-wrapper py-3">
       <div class="container">
@@ -23,35 +29,35 @@
           <div class="row g-20">
 
             <div class="col-4">
-              <div class="card catagory-card">
+              <div class="card catagory-card" style="width:100px;height:110px;">
                 <div class="card-body">
-                  <a href="{{ url('/scan') }}">
+                  <a href="/scan">
                     <div class="icon">
                     <img src="https://cdn-icons-png.flaticon.com/512/3082/3082394.png" style="width:50px;height:50px;">
                     </div>
                   </a>
-                  <h6>QR Scan</h6>
+                  <h6>Scan</h6>
                 </div>
                </div>
             </div>
             
             <div class="col-4">
-              <div class="card catagory-card">
+              <div class="card catagory-card" style="width:100px;height:110px;">
                 <div class="card-body">
-                  <a href="{{route('view.pay')}}">
+                  <a href="/pay">
                     <div class="icon">
                     <img src="https://cdn-icons-png.flaticon.com/512/714/714390.png" style="width:50px;height:50px;">
                   </div>
                   </a>
-                  <h6>QR Code</h6>
+                  <h6>Pay</h6>
                 </div>
               </div>
             </div>
 
             <div class="col-4">
-              <div class="card catagory-card">
+              <div class="card catagory-card" style="width:100px;height:110px;">
                 <div class="card-body">
-                  <a href="{{ route('view.transactionHistory')}}">
+                  <a href="/transactionHistory">
                     <div class="icon">
                     <img src="https://cdn-icons-png.flaticon.com/512/3307/3307961.png" style="width:50px;height:50px;">
                     </div>
@@ -72,35 +78,35 @@
           <div class="row g-20">
 
             <div class="col-4">
-              <div class="card catagory-card">
+              <div class="card catagory-card" style="width:100px;height:110px;">
                 <div class="card-body">
-                  <a href="{{ route('profile')}}">
+                  <a href="/profile">
                     <div class="icon">
                     <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" style="width:50px;height:50px;">
                     </div>
                   </a>
-                  <h6>MY Profile</h6>
+                  <h6>Profile</h6>
                 </div>
                </div>
             </div>
 
             <div class="col-4">
-              <div class="card catagory-card">
+              <div class="card catagory-card" style="width:100px;height:110px;">
                 <div class="card-body">
                   <a href="/transferr">
                     <div class="icon">
                     <img src="https://cdn-icons-png.flaticon.com/512/3029/3029373.png" style="width:50px;height:50px;">
                   </div>
                   </a>
-                  <h6>Transfer Money</h6>
+                  <h6>Transfer</h6>
                 </div>
               </div>
             </div>
 
             <div class="col-4">
-              <div class="card catagory-card">
+              <div class="card catagory-card" style="width:100px;height:110px;">
                 <div class="card-body">
-                  <a href="{{route('view.test')}}">
+                  <a href="/test">
                     <div class="icon">
                     <img src="https://as2.ftcdn.net/v2/jpg/05/38/38/17/1000_F_538381771_krbbFtOQMv4ZdsqWWipI6Q77D6gLGZp6.jpg" style="width:50px;height:50px;">
                     </div>
@@ -122,9 +128,9 @@
           <div class="row g-20">
 
             <div class="col-4">
-              <div class="card catagory-card">
+              <div class="card catagory-card" style="width:100px;height:110px;">
                 <div class="card-body">
-                  <a href="{{ url('#') }}">
+                  <a href="">
                     <div class="icon">
                     <img src="https://cdn-icons-png.flaticon.com/512/948/948036.png" style="width:50px;height:50px;">
                     </div>
@@ -135,27 +141,27 @@
             </div>
             
             <div class="col-4">
-              <div class="card catagory-card">
+              <div class="card catagory-card" style="width:100px;height:110px;">
                 <div class="card-body">
                   <a href="">
                     <div class="icon">
                     <img src="https://as2.ftcdn.net/v2/jpg/05/38/38/17/1000_F_538381771_krbbFtOQMv4ZdsqWWipI6Q77D6gLGZp6.jpg" style="width:50px;height:50px;">
                   </div>
                   </a>
-                  <h6>Incoming </h6>
+                  <h6>... </h6>
                 </div>
               </div>
             </div>
 
             <div class="col-4">
-              <div class="card catagory-card">
+              <div class="card catagory-card" style="width:100px;height:110px;">
                 <div class="card-body">
                   <a href="#">
                     <div class="icon">
                     <img src="https://as2.ftcdn.net/v2/jpg/05/38/38/17/1000_F_538381771_krbbFtOQMv4ZdsqWWipI6Q77D6gLGZp6.jpg" style="width:50px;height:50px;">
                     </div>
                   </a>
-                  <h6>Incoming</h6>
+                  <h6>...</h6>
                 </div>
               </div>
             </div>

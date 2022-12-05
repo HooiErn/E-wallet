@@ -38,7 +38,7 @@ Route::post('post-registration', [AuthController::class, 'postRegistration'])->n
 
 //Route for editing and updating users' information
 
-Route::get('QrScan',[AdminController::class, 'QrScan'])->name('QrScan');
+
 Route::get('MemberRegistration',[AdminController::class, 'MemberRegistration'])->name('member.register');
 Route::get('BranchRegistration',[AdminController::class, 'BranchRegistration'])->name('branch.register');
 Route::get('AgentsRegistration',[AdminController::class, 'AgentsRegistration'])->name('agent.register');
@@ -51,7 +51,7 @@ Route::get('viewAgents',[AdminController::class, 'viewAgents'])->name('view.agen
 //Transfer
 Route::post('/Transfer',[HomeController::class, 'searchUser'] ) ->name('search.user');
 Route::get('transferr',[HomeController::class, 'transferr'])->name('view.transfeR');
-Route::get('/transfer/{id}', [HomeController::class, 'transferForm']);
+Route::get('transfer/{id}', [HomeController::class, 'transferForm']);
 Route::post('check-out/transfer', [HomeController::class, 'transfer']);
 Route::get('transactionHistory',[HomeController::class, 'transactionHistory'])->name('view.transactionHistory');
 Route::get('test',[HomeController::class, 'test'])->name('view.test');

@@ -153,7 +153,7 @@
         <div class="container">
 
         @foreach($users as $user)
-        &nbsp;<a class="navbar-brand" href="#" style="color:white;display:inline;"> MY Balance: {{$user ->balance}}</a> 
+        &nbsp;<a class="navbar-brand" href="#" style="color:white;display:inline;"> MY Balance: {{number_format($user ->balance/100,2)}}</a> 
            @endforeach
 
         </nav> 

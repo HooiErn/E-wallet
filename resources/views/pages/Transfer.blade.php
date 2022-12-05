@@ -34,16 +34,15 @@
 <div class="transfer">
     <form action="{{ url('check-out/transfer') }}" method="POST">
         @csrf
-        @foreach($users as $us)
-        <input type="hidden" name="userID" id="userID" value="{{$us -> id}}">
+
+        <input type="hidden" name="userID" id="userID" value="{{$users -> account_id}}">
         <div class="form-group">
-            <h3 style="color:blue;"> {{$us -> name}}</h3>
+            <h3 style="color:blue;"> {{$users -> name}}</h3>
         </div>
         <div class="form-group col-11" style="padding-left:0 !important;">
             <label for="amount">Transfer Amount: </label>
-            <input type="number" name="amount" id="amount" class="form-control"  required>
+            <input type="number" min="0" step="0.01" class="form-control" name="amount" id="amount">
         </div>
-        @endforeach
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Confirm
 </button>

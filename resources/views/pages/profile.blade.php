@@ -43,7 +43,7 @@
                     </div>
                 
                 <div class="column">
-                    <p>RM {{$user -> balance}}</p>
+                    <p>RM {{number_format($user ->balance/100,2)}}</p>
                     <a href="#" style="color:grey;">MY Balance</a>
                 </div>
 
