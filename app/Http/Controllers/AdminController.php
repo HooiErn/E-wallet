@@ -64,10 +64,6 @@ class AdminController extends Controller
 
 //Function
 
-//QRScan
-public function QrScan(){
-    return view('pages.QrScan');
-}
 //Create Members
 public function MemberRegistration(){
 
